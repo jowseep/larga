@@ -8,25 +8,25 @@ pageEncoding="UTF-8" %>
     <sx:head />
   </head>
   <body>
-    <s:form action="displayUser">
-      <sx:autocompleter
-        label="Choose your record"
-        list="listOfFirstNames"
-        name="nameInput"
-        showDownArrow="false"
-      />
-
-      <s:submit />
+    <h3>Account Search:</h3>
+    <s:form action="userAccount">
+        <sx:autocompleter
+            label="Enter first name"
+            list="firstNames"
+            name="nameInput"
+        />
+        <s:submit/>
     </s:form>
-
-    <h3>All User Records:</h3>
-
-    <s:iterator value="accounts">
-      <fieldset>
-        <s:property value="firstName" /><br />
-        <s:property value="lastName" /><br /><s:property value="age" /><br />
-      </fieldset>
+    
+    <h3>All User Records:</h3>  
+    <s:iterator value="account">  
+    <fieldset>  
+        <s:property value="firstName"/><br/> 
+        <s:property value="lastName"/><br/>
+        <s:property value="username"/><br/>
+        <s:property value="birthDate"/><br/>
+        <s:property value="email"/><br/><hr>
+    </fieldset>  
     </s:iterator>
-    <p><a href="<s:url action='index' />">Return to home page</a>.</p>
   </body>
 </html>

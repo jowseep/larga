@@ -1,30 +1,38 @@
 package com.example.proj.action;
 
+import com.example.proj.model.*;
+
 import java.sql.PreparedStatement;
-import java.sql.Connection;
+import java.util.ArrayList;
+import java.sql.Connection;                
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import com.example.proj.model.Account;
-
 public class List extends ActionSupport {
-
-    ArrayList<Account> accounts = new ArrayList<Account>();
-    public ArrayList<String> listOfFirstNames = new ArrayList<String>();
-    public Account selectedAccount = new Account();
+    
+    ArrayList<Accounts> account = new ArrayList<Accounts>();
+    ArrayList<String> firstNames = new ArrayList<String>();
     public String nameInput;
-    Connection connection = null;
+    Accounts accountFound;
+    public String error = "Random";
 
-    public ArrayList<Account> getAccounts() {
-        return accounts;
+    public ArrayList<Accounts> getAccount() {  
+        return account; 
     }
 
-    public void setAccounts(ArrayList<Account> accounts) {
-        this.accounts = accounts;
+    public void setList(ArrayList<Accounts> account) {  
+        this.account = account;  
+    }
+    
+    public ArrayList<String> getFirstNames() {
+        return firstNames;
+    }
+
+    public void setFirstNames(ArrayList<String> firstNames) {
+        this.firstNames = firstNames;
     }
 
     public String getNameInput() {
@@ -35,68 +43,88 @@ public class List extends ActionSupport {
         this.nameInput = nameInput;
     }
 
-    public Account getSelectedAccount() {
-        return selectedAccount;
+    public Accounts getAccountFound() {
+        return accountFound;
     }
 
-    public void setSelectedAccount(Account selectedAccount) {
-        this.selectedAccount = selectedAccount;
+    public void setAccountFound(Accounts accountFound) {
+        this.accountFound = accountFound;
     }
 
-    public Connection connectToDB() {
+    public Connection connectToDB() throws SQLException {
         Connection connection = null;
         try {
-            String URL = "jdbc:mysql://localhost:3306/sampledb?useTimezone=true&serverTimezone=UTC";
+            String URL = "jdbc:mysql://localhost:3306/mydb";
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(URL, "root", "password");
 
+            return connection;
         } catch (Exception e) {
+            error = e.toString();
         }
-        return connection;
+
+        return null;
     }
 
     public String execute() throws Exception {
+        Connection connection = connectToDB();
+        PreparedStatement preparedStatement = null;
+        try {
 
-        connection = connectToDB();
-        if (connection != null) {
-            String sql = "SELECT * FROM accounts";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet rs = preparedStatement.executeQuery();
-            
-            while (rs.next()) {
-                Account account = new Account();
-                account.setFirstName(rs.getString(2));
-                account.setLastName(rs.getString(3));
-                account.setAge(rs.getInt(4));
-                accounts.add(account);
-                listOfFirstNames.add(account.getFirstName());
+            if (connection != null) {
+                String sql = "SELECT * FROM userinfo";
+                preparedStatement = connection.prepareStatement(sql);
+                ResultSet rs= preparedStatement.executeQuery();
+
+                while(rs.next()){  
+                    Accounts accounts=new Accounts();
+                    accounts.setFirstName(rs.getString(2));   
+                    accounts.setLastName(rs.getString(3));
+                    accounts.setUsername(rs.getString(7));
+                    accounts.setBirthDate(rs.getString(4));   
+                    accounts.setEmail(rs.getString(5)); 
+                    account.add(accounts);
+                    firstNames.add(accounts.getFirstName());
+                }
+
             }
-            preparedStatement.close();
-            connection.close();
-        }
-        return SUCCESS;
-    }
-
-    public String displayUser() throws Exception {
-
-       connection = connectToDB();
-        if (connection != null) {
-            String sql = "SELECT * FROM accounts WHERE first_name = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, getNameInput());
-            ResultSet rs = preparedStatement.executeQuery();
-
-            while (rs.next()) {
-                selectedAccount.setFirstName(rs.getString(2));
-                selectedAccount.setLastName(rs.getString(3));
-                selectedAccount.setAge(rs.getInt(4));
-            }
-
-            preparedStatement.close();
-            connection.close();
-        }
+        } catch (Exception e) {
+         } finally {
+            if (preparedStatement != null) try { preparedStatement.close(); } catch (SQLException ignore) {}
+            if (connection != null) try { connection.close(); } catch (SQLException ignore) {}
+         }
 
         return SUCCESS;
-    }
 
+    }
+    
+    public String userAccount() throws SQLException {
+        Connection connection = connectToDB();
+        PreparedStatement preparedStatement = null;
+        try {
+            if (connection != null) {
+                String sql = "SELECT * FROM userinfo WHERE firstname='"+nameInput+"'";
+                preparedStatement = connection.prepareStatement(sql);
+                ResultSet rs= preparedStatement.executeQuery();
+
+                while(rs.next()){ 
+                    Accounts newaccounts = new Accounts(); 
+                    newaccounts.setLastName(rs.getString(3));
+                    newaccounts.setUsername(rs.getString(7));
+                    newaccounts.setBirthDate(rs.getString(4));   
+                    newaccounts.setEmail(rs.getString(5)); 
+                    newaccounts.setFirstName(rs.getString(2));
+                    setAccountFound(newaccounts);
+                }
+
+            }
+        } catch (Exception e) {
+         } finally {
+            if (preparedStatement != null) try { preparedStatement.close(); } catch (SQLException ignore) {}
+            if (connection != null) try { connection.close(); } catch (SQLException ignore) {}
+         }
+
+         return SUCCESS;
+    }
+    
 }

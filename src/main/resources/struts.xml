@@ -6,7 +6,16 @@
 <struts>
     <constant name="struts.devMode" value="true" />
 
-    <package name="basicstruts2" extends="struts-default">
+    <constant name="struts.convention.action.suffix" value="Controller"/>
+    <constant name="struts.convention.action.mapAllMatches" value="true"/>
+    <constant name="struts.convention.default.parent.package" value="rest-default"/>
+    <constant name="struts.convention.package.locators" value="rest"/>
+
+    <constant name="struts.mapper.class" value="org.apache.struts2.dispatcher.mapper.PrefixBasedActionMapper" />
+    <constant name="struts.mapper.prefixMapping" value="/api:rest,:struts"/>
+    <constant name="struts.rest.namespace" value="/api" />
+    <!-- added namespace para og mag basic-struts/ kay moadto sa index -->
+    <package name="basicstruts2" namespace="/" extends="struts-default">
         <action name="index">
             <result>/index.jsp</result>
         </action>
@@ -31,6 +40,12 @@
             <result name="success">/welcome.jsp</result>
         </action>
         
+    </package>
+
+    <package name="api" namespace="/api" extends="rest-default">
+        <action name="accounts/*" class="com.example.proj.rest.AccountsController">
+            <param name="id">{1}</param>
+        </action>
     </package>
     
 

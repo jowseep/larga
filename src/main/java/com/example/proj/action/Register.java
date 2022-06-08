@@ -1,42 +1,55 @@
 package com.example.proj.action;
 
-import com.opensymphony.xwork2.ActionSupport;                                                                                                            
-import com.example.proj.model.Account;
-                                        
-import java.sql.Statement;
-import java.sql.Connection;                
+import com.opensymphony.xwork2.ActionSupport;  
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+import com.example.proj.model.*;;
 
-public class Register extends ActionSupport {
+public class Register extends ActionSupport{
     
     private static final long serialVersionUID = 1L;
-                                 
-    private Account accountBean;
+    
+    private Accounts account;
     private String error = "Random";
+    private String firstName, lastName, username, password, birthDate, email; 
+
+    public Register() {
+        
+    }
 
     public String execute() throws Exception {
-        accountBean = getAccountBean();
+        account = getAccount();
         if(saveToDB()) {
-            return SUCCESS;
+            return "success";
         } else {
-            return ERROR;
+            return "fail";
         }
     }
 
-    public boolean saveToDB() throws SQLException {
+    public Connection connectToDB() throws SQLException {
         Connection connection = null;
-        Statement statement = null;
         try {
-            String URL = "jdbc:mysql://localhost:3306/sampledb?useTimezone=true&serverTimezone=UTC";
+            String URL = "jdbc:mysql://localhost:3306/mydb";
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(URL, "root", "password");
 
+            return connection;
+        } catch (Exception e) {
+            error = e.toString();
+        }
+
+        return null;
+    }
+
+    public boolean saveToDB() throws SQLException {
+        Connection connection = connectToDB();
+        Statement statement = null;
+        try {
             if (connection != null) {
                 statement = connection.createStatement();
-                String sql = "INSERT INTO accounts(first_name, last_name, age, email, password, user_type) VALUES('"+
-                    accountBean.getFirstName()+"','"+accountBean.getLastName()+"','"+accountBean.getAge()+"','"+
-                    accountBean.getEmail()+"','"+accountBean.getPassword()+"','"+accountBean.getUserType()+"')";
+                String sql = "INSERT INTO userinfo(firstname, lastname, birthdate, email, username, password) VALUES('"+account.getFirstName()+"','"+account.getLastName()+"','"+account.getBirthDate()+"','"+account.getEmail()+"','"+account.getUsername()+"','"+account.getPassword()+"')";
                 statement.executeUpdate(sql);
                 return true;
             } else {
@@ -55,14 +68,61 @@ public class Register extends ActionSupport {
     public String getError() {
         return error;
     }
-    
-    public Account getAccountBean() {
-        return accountBean;
-    }
-    
-    public void setAccountBean(Account account) {
-        accountBean = account;
+
+    public Accounts getAccount() {
+        return account;
     }
 
-    
+    public void setAccount(Accounts account) {
+        this.account = account;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
