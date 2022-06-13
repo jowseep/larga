@@ -1,6 +1,10 @@
 com/example/proj/action/Register.class
 com/example/proj/model/Accounts.class
+com/example/proj/model/Articles.class
 com/example/proj/rest/AccountsRepository.class
+com/example/proj/model/Articles$Source.class
+com/example/proj/action/News.class
+com/example/proj/rest/AccountsController.class
+com/example/proj/model/NewsResponse.class
 com/example/proj/action/Login.class
 com/example/proj/action/List.class
-com/example/proj/rest/AccountsController.class

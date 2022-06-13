@@ -9,7 +9,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
   <body>
     
     <s:include value="./common/header.jsp" />
-    <h1>Struts 2 - Connecting to Database</h1>
+    <h1>Log-in</h1>
     
     <s:form action="login">
       <s:textfield name="username" label="Username"/>
@@ -19,6 +19,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
 
     <p><a href="register.jsp">Register a user here.</a></p>
     <p><a href="<s:url action='list'/>">Display user list</a></p>
+    <p><a href="<s:url action='news'/>">News for today's video</a></p>
   </body>
 </html>
 

@@ -5,12 +5,11 @@ uri = "/struts-tags" %>
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Poppins", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
   /* HEADER STYLES */
   header {
-    background: rgb(180, 121, 180);
+    background: #8CDBA9;
     color: white;
     height: 100px;
   }
@@ -28,7 +27,7 @@ uri = "/struts-tags" %>
   }
   .links {
     text-decoration: none;
-    color: white;
+    color: black;
     font-size: 1rem;
     padding: 0 20px;
   }
@@ -37,7 +36,7 @@ uri = "/struts-tags" %>
     border-bottom: 2px solid white;
   }
   .signin {
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 1rem;
     font-weight: 500;
     transition: 0.3s ease ease-in-out;
@@ -54,7 +53,7 @@ uri = "/struts-tags" %>
     <ul class="nav-list">
       <li class="nav-list">
         <s:url var="Signin" />
-        <s:a href="%{Signin}" class="links">Sign Up</s:a>
+        <s:a href="%{Signin}" class="links">Register</s:a>
       </li>
       <li class="nav-list">
         <s:url var="Signup" />

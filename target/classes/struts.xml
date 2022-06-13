@@ -10,6 +10,7 @@
     <constant name="struts.convention.action.mapAllMatches" value="true"/>
     <constant name="struts.convention.default.parent.package" value="rest-default"/>
     <constant name="struts.convention.package.locators" value="rest"/>
+    <constant name="struts.rest.content.restrictToGET" value="false"/>
 
     <constant name="struts.mapper.class" value="org.apache.struts2.dispatcher.mapper.PrefixBasedActionMapper" />
     <constant name="struts.mapper.prefixMapping" value="/api:rest,:struts"/>
@@ -38,6 +39,14 @@
 
         <action name="displayUser" class="com.example.proj.action.List" method="displayUser">
             <result name="success">/welcome.jsp</result>
+        </action>
+
+        <action name="news" class="com.example.proj.action.News" method="execute">
+            <result name="success">/news.jsp</result>
+        </action>
+
+        <action name="search" class="com.example.proj.action.News" method="search">
+            <result name="success">/news.jsp</result>
         </action>
         
     </package>

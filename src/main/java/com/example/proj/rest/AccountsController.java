@@ -18,17 +18,17 @@ public class AccountsController implements ModelDriven<Object> {
     {
         map = accountsRepository.findAllAccounts();
     }
-
+    // GET
     public HttpHeaders index() {
         model = map;
         return new DefaultHttpHeaders("index").disableCaching();
     }
-
+    // POST
     public HttpHeaders show() {
 		model = accountsRepository.getAccountById(getId());
 		return new DefaultHttpHeaders("show");
 	}
-    // mag error og dili butngan og public save accounts
+    // PUT
     public HttpHeaders create() {
         accountsRepository.save(account);
         return new DefaultHttpHeaders("create");

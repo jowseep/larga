@@ -15,6 +15,7 @@ public class AccountsRepository {
     public AccountsRepository() {
     }
 
+    // connection to database
     public Connection connectToDB(){
         Connection connection = null;
         try {
@@ -29,7 +30,7 @@ public class AccountsRepository {
     
         return null;
     }
-
+    // GET information
     public Map<String, Accounts> findAllAccounts() {
         Connection connection = connectToDB();
         PreparedStatement preparedStatement = null;
@@ -63,7 +64,7 @@ public class AccountsRepository {
     public Accounts getAccountById(String id) {
         return map.get(id);
     }
-
+    // POST
     public Map<String, Accounts> save(Accounts account) {
         Connection connection = connectToDB();
         Statement statement = null;
