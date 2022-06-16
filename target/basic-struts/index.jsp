@@ -4,6 +4,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="./common/style.css">
     <title>Basic Struts 2 Application - Welcome</title>
   </head>
   <body>
@@ -20,6 +21,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
     <p><a href="register.jsp">Register</a></p>
     <p><a href="<s:url action='list'/>">List of users</a></p>
     <p><a href="<s:url action='news'/>">News for today's video</a></p>
+    <p><a href="<s:url action='weather'/>">Hey, siri. What's the weather today?</a></p>
   </body>
 </html>
 

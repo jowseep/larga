@@ -4,9 +4,11 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="./common/style.css">
     <title>Register</title>
   </head>
   <body>
+    <s:include value="./common/header.jsp" />
     <h3>Register for a prize by completing this form.</h3>
 
     <s:form action="register">

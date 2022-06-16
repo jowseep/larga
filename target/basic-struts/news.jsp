@@ -4,8 +4,11 @@ pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="./common/style.css">
+    <title>News | Larga!</title>
   </head>
   <body>
+    <s:include value="./common/header.jsp" />
     <h3>News for today's video:</h3>
     <p><a href="index.jsp">Home</a></p>
     <s:form action="search">
@@ -20,12 +23,15 @@ pageEncoding="UTF-8" %>
       <s:textfield name="search" label="Search"/>
       <s:submit value="Search"/>
     </s:form>
-    <s:iterator value="newsResponse.articles">  
-        <fieldset>  
-            <s:property value="title"/><br/> 
-            <s:property value="author"/><br/>
-            <s:property value="content"/><br/>
-        </fieldset>  
-    </s:iterator>
+      <s:iterator value="newsResponse.articles">
+          <fieldset>
+              <p><s:property value="publishedAt"/></p>
+              <p><s:property value="title"/></p>
+              <p><s:property value="author"/></p>
+              <p><s:property value="description"/></p>
+              <s:url value="url" var="url"/>
+              <p><s:a href="%{url}">Read more</s:a></p>
+          </fieldset>
+        </s:iterator>
   </body>
 </html>

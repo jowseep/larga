@@ -5,9 +5,10 @@ pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
   <head>
-    <sx:head />
+    <link rel="stylesheet" href="common/style.css">
   </head>
   <body>
+    <s:include value="./common/header.jsp" />
     <h3>Account Search:</h3>
     <s:form action="userAccount">
         <sx:autocompleter

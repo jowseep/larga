@@ -47,4 +47,8 @@ public class AccountsController implements ModelDriven<Object> {
     public Object getModel() {
         return (model != null ? model : account);
     }
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+    
 }

@@ -15,6 +15,8 @@
     <constant name="struts.mapper.class" value="org.apache.struts2.dispatcher.mapper.PrefixBasedActionMapper" />
     <constant name="struts.mapper.prefixMapping" value="/api:rest,:struts"/>
     <constant name="struts.rest.namespace" value="/api" />
+
+    <constant name="struts.ui.theme" value="simple"/>
     <!-- added namespace para og mag basic-struts/ kay moadto sa index -->
     <package name="basicstruts2" namespace="/" extends="struts-default">
         <action name="index">
@@ -44,19 +46,15 @@
         <action name="news" class="com.example.proj.action.News" method="execute">
             <result name="success">/news.jsp</result>
         </action>
-
+        
         <action name="search" class="com.example.proj.action.News" method="search">
             <result name="success">/news.jsp</result>
         </action>
 
-        <action name="lang" class="com.example.proj.action.News" method="lang">
-            <result name="success">/news.jsp</result>
+        <action name="weather" class="com.example.proj.action.Weather" method="execute">
+            <result name="success">/weather.jsp</result>
         </action>
 
-        <action name="sort" class="com.example.proj.action.News" method="sort">
-            <result name="success">/news.jsp</result>
-        </action>
-        
     </package>
 
     <package name="api" namespace="/api" extends="rest-default">

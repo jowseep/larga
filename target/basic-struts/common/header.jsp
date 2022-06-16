@@ -1,63 +1,19 @@
 <%@ page contentType = "text/html; charset = UTF-8" %> <%@ taglib prefix = "s"
 uri = "/struts-tags" %>
-<style>
-  * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
-  /* HEADER STYLES */
-  header {
-    background: #8CDBA9;
-    color: white;
-    height: 100px;
-  }
-  nav {
-    display: inline;
-    float: right;
-    text-align: center;
-    padding: 30px;
-    text-decoration: none;
-  }
-  .nav-list {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-  }
-  .links {
-    text-decoration: none;
-    color: black;
-    font-size: 1rem;
-    padding: 0 20px;
-  }
-  .links:hover {
-    opacity: 0.6;
-    border-bottom: 2px solid white;
-  }
-  .signin {
-    border: 1px solid black;
-    border-radius: 1rem;
-    font-weight: 500;
-    transition: 0.3s ease ease-in-out;
-    text-transform: uppercase;
-    padding: 10px 20px;
-  }
-  .signin:hover {
-    color: black;
-    background: rgba(255, 255, 255, 0.692);
-  }
-</style>
 <header>
   <nav>
     <ul class="nav-list">
       <li class="nav-list">
-        <s:url var="Signin" />
-        <s:a href="%{Signin}" class="links">Register</s:a>
+        <p><a href="index.jsp">Book</a></p>
       </li>
       <li class="nav-list">
-        <s:url var="Signup" />
-        <s:a href="%{Signup}" class="links signin">Log In</s:a>
+        <p><a href="<s:url action='news'/>">News</a></p>
+      </li>
+      <li class="nav-list">
+        <p><a href="<s:url action='weather'/>">Weather</a></p>
+      </li>
+      <li class="nav-list">
+        <p><a href="index.jsp">Index</a></p>
       </li>
     </ul>
   </nav>
