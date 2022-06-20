@@ -49,14 +49,19 @@ public class Register extends ActionSupport{
     }
 
     public String encrypt(String password) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        byte[] hash = md.digest(password.getBytes(StandardCharsets.UTF_8));
-        StringBuilder s = new StringBuilder();
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder s = new StringBuilder();
 
-        for(int i=0;i<hash.length;i++) {
-            s.append(Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1));
+            for(int i=0;i<hash.length;i++) {
+                s.append(Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            encryptedPassword = s.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.toString();
         }
-        return encryptedPassword = s.toString();
+        return encryptedPassword;
     }
 
     public boolean saveToDB() throws SQLException {

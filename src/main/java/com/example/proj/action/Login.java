@@ -82,47 +82,20 @@ public class Login extends ActionSupport {
     }
 
     public String encrypt(String password) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        byte[] hash = md.digest(password.getBytes(StandardCharsets.UTF_8));
-        StringBuilder s = new StringBuilder();
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder s = new StringBuilder();
 
-        for(int i=0;i<hash.length;i++) {
-            s.append(Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1));
+            for(int i=0;i<hash.length;i++) {
+                s.append(Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            encryptedPassword = s.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.toString();
         }
-        return encryptedPassword = s.toString();
+        return encryptedPassword;
     }
-
-    // public String userLogin() throws SQLException {
-    //     Connection connection = connectToDB();
-    //     PreparedStatement preparedStatement = null;
-    //     try {
-    //         if (connection != null) {
-    //             String sql = "SELECT * FROM userinfo WHERE firstname='"+account.getUsername()+"' AND password='"+account.getPassword()+"'";
-    //             preparedStatement = connection.prepareStatement(sql);
-    //             ResultSet rs= preparedStatement.executeQuery();
-
-    //             while(rs.next()){ 
-    //                 Accounts newaccounts = new Accounts(); 
-    //                 newaccounts.setLastName(rs.getString(3));
-    //                 newaccounts.setUsername(rs.getString(7));
-    //                 newaccounts.setStatus(rs.getString(6));
-    //                 newaccounts.setBirthDate(rs.getString(4));   
-    //                 newaccounts.setEmail(rs.getString(5)); 
-    //                 newaccounts.setFirstName(rs.getString(2));
-    //                 setAccountFound(newaccounts);
-    //             }
-    //             return SUCCESS;
-    //         } else {
-    //             return "fail";
-    //         }
-    //     } catch (Exception e) {
-    //         error = e.toString();
-    //         return "fail";
-    //     } finally {
-    //         if (preparedStatement != null) try { preparedStatement.close(); } catch (SQLException ignore) {}
-    //         if (connection != null) try { connection.close(); } catch (SQLException ignore) {}
-    //     }
-    // }
 
     public Accounts getAccount() {
         return account;
