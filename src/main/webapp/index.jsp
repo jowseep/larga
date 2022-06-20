@@ -15,7 +15,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
       <div class="login-form">
         <s:form action="login">
           <s:textfield name="username" label="Username" class="username" placeholder="Username"/><br>
-          <s:textfield name="password" label="Password" class="username" placeholder="Password"/><br>
+          <s:password name="password" label="Password" class="username" placeholder="Password"/><br>
           <s:submit value="Login" class="submit"/>
         </s:form>
       </div>

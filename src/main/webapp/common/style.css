@@ -32,7 +32,11 @@
   .login-form, .options {
     margin: 20px 20px 0px 20px;
     font-weight: 200;
-  } 
+  }
+  
+  .search-form {
+    margin-top: 20px;
+  }
 
   .login-header {
     margin-left: 20px;
@@ -41,7 +45,7 @@
     color: #112B3C;
   }
 
-  .username, .password {
+  .username, .password, .reg {
     height: 24px;
     width: 200px;
     border: solid 0.5px;
@@ -62,6 +66,7 @@
     margin-top: 10px;
     font-size: 14px;
     font-weight: 200;
+    width: 211px;
   }
 
   .login-whole {
@@ -79,20 +84,22 @@
     margin: 20px 40px 20px 20px;
   }
 
-  .news {
-    color: gray;
-  }
-
   .news-font {
     color: black;
   }
 
   .newst {
-    width: 500px;
+    width: 90%;
     margin-left: 20px;
     border: solid 0.7px;
     border-radius: 5px;
     margin-bottom: 5px;
+    position: relative;
+  }
+
+  .head {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
   }
 
   .city {
@@ -103,3 +110,12 @@
     margin-top: 10px;
     width: 240;
   }
+
+  .dropdown {
+    height: 34px;
+    border: solid 0.5px;
+    padding: 5px;
+    border-radius: 3px;
+    margin-top: 10px;
+    width: 240;
+}

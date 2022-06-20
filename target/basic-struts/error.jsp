@@ -9,7 +9,7 @@
   <body>
     <h3>Registration error!</h3>
 
-    <p>There is an error: <s:property value="error" /> </p>
+    <p>There is an error </p>
 
     <p><a href="<s:url action='index' />" >Return to home page</a>.</p>
   </body>

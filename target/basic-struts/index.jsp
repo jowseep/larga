@@ -8,20 +8,22 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
     <title>Basic Struts 2 Application - Welcome</title>
   </head>
   <body>
-    
     <s:include value="./common/header.jsp" />
-    <h1>Log-in</h1>
     
-    <s:form action="login">
-      <s:textfield name="username" label="Username"/>
-      <s:textfield name="password" label="Password"/>
-      <s:submit value="Login"/>
-    </s:form>
-
-    <p><a href="register.jsp">Register</a></p>
-    <p><a href="<s:url action='list'/>">List of users</a></p>
-    <p><a href="<s:url action='news'/>">News for today's video</a></p>
-    <p><a href="<s:url action='weather'/>">Hey, siri. What's the weather today?</a></p>
+    <div class="login-whole">
+      <h1 class="login-header">Pag log-in sa</h1>
+      <div class="login-form">
+        <s:form action="login">
+          <s:textfield name="username" label="Username" class="username" placeholder="Username"/><br>
+          <s:password name="password" label="Password" class="username" placeholder="Password"/><br>
+          <s:submit value="Login" class="submit"/>
+        </s:form>
+      </div>
+      <div class="options">
+        <p><a href="register.jsp">Register</a></p>
+        <p><a href="<s:url action='list'/>">List of users</a></p>
+      </div>
+    </div>
   </body>
 </html>
 

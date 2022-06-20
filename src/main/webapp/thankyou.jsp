@@ -9,7 +9,7 @@
   <body>
     <h3>Registration Success!</h3>
 
-    <p>Your registered data: <s:property value="accountBean" /> </p>
+    <p>Your registered data: <s:property value="account" /> </p>
 
     <p><a href="<s:url action='index' />" >Return to home page</a>.</p>
   </body>

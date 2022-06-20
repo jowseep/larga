@@ -13,7 +13,7 @@ uri = "/struts-tags" %>
         <p><a href="<s:url action='weather'/>">Weather</a></p>
       </li>
       <li class="nav-list">
-        <p><a href="index.jsp">Index</a></p>
+        <p><a href="index.jsp">Home</a></p>
       </li>
     </ul>
   </nav>

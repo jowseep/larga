@@ -1,11 +1,16 @@
 package com.example.proj.action;
 
-import com.opensymphony.xwork2.ActionSupport;  
+import com.opensymphony.xwork2.ActionSupport;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import com.example.proj.model.*;;
+import com.example.proj.model.*;
+
 
 public class Register extends ActionSupport{
     
@@ -13,7 +18,7 @@ public class Register extends ActionSupport{
     
     private Accounts account;
     private String error = "Random";
-    private String firstName, lastName, username, password, birthDate, email; 
+    private String encryptedPassword;
 
     public Register() {
         
@@ -32,7 +37,7 @@ public class Register extends ActionSupport{
         Connection connection = null;
         try {
             String URL = "jdbc:mysql://localhost:3306/mydb";
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(URL, "root", "password");
 
             return connection;
@@ -43,13 +48,25 @@ public class Register extends ActionSupport{
         return null;
     }
 
+    public String encrypt(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] hash = md.digest(password.getBytes(StandardCharsets.UTF_8));
+        StringBuilder s = new StringBuilder();
+
+        for(int i=0;i<hash.length;i++) {
+            s.append(Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1));
+        }
+        return encryptedPassword = s.toString();
+    }
+
     public boolean saveToDB() throws SQLException {
         Connection connection = connectToDB();
         Statement statement = null;
         try {
             if (connection != null) {
                 statement = connection.createStatement();
-                String sql = "INSERT INTO userinfo(firstname, lastname, birthdate, email, username, password) VALUES('"+account.getFirstName()+"','"+account.getLastName()+"','"+account.getBirthDate()+"','"+account.getEmail()+"','"+account.getUsername()+"','"+account.getPassword()+"')";
+                System.out.println("The encrypted password is: " + encrypt(account.getPassword()));
+                String sql = "INSERT INTO userinfo(firstname, lastname, birthdate, email, username, password) VALUES('"+account.getFirstName()+"','"+account.getLastName()+"','"+account.getBirthDate()+"','"+account.getEmail()+"','"+account.getUsername()+"','"+encrypt(account.getPassword())+"')";
                 statement.executeUpdate(sql);
                 return true;
             } else {
@@ -77,52 +94,11 @@ public class Register extends ActionSupport{
         this.account = account;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getEncryptedPassword() {
+        return encryptedPassword;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setEncryptedPassword(String encryptedPassword) {
+        this.encryptedPassword = encryptedPassword;
     }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
 }

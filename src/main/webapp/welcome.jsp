@@ -7,8 +7,7 @@
     <title>Welcome page...</title>
   </head>
     <h2>Welcome!</h2>
-    <p><s:property value="selectedAccount.firstName" /></p>
-    <p><s:property value="selectedAccount.lastName" /></p>
-    <p><s:property value="selectedAccount.age" /></p>
+    <p><s:property value="account.firstName" /></p>
+    <p><a href="<s:url action='index' />" >Return to home page</a>.</p>
   </body>
 </html>

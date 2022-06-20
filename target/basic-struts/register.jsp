@@ -9,18 +9,20 @@
   </head>
   <body>
     <s:include value="./common/header.jsp" />
-    <h3>Register for a prize by completing this form.</h3>
 
-    <s:form action="register">
-      <s:textfield name="accountBean.firstName" label="First name" />
-      <s:textfield name="accountBean.lastName" label="Last name" />
-      <s:textfield name="accountBean.age"  label="Age"  />
-      <s:textfield name="accountBean.email"  label ="Email"/>
-      <s:textfield name="accountBean.password"  label ="Password"/>
-      <s:select name="accountBean.userType" label="Select user type:"
-        list="#{'1':'Reader', '2':'Author'}" 
-        value="2" />
-      <s:submit/>
-    </s:form>
+    <div class="login-whole">
+      <h1 class="login-header">Pag register sa</h1>
+      <div class="login-form">
+        <s:form action="register">
+            <s:textfield name="account.firstName" class="reg" placeholder="Firstname" /><br>
+            <s:textfield name="account.lastName" class="reg" placeholder="Lastname" /><br>
+            <s:textfield name="account.username" class="reg" placeholder="Username" /><br>
+            <s:password name="account.password" class="reg" placeholder="Password"/><br>
+            <s:textfield name="account.birthDate" class="reg" placeholder="Birthdate" /><br>
+            <s:textfield name="account.email" class="reg" placeholder="Email" /><br>
+            <s:submit class="submit"/>
+        </s:form>
+      </div>
+    </div>
   </body>
 </html>

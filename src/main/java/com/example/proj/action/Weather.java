@@ -11,11 +11,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class Weather {
     DataResponse dataResponse = new DataResponse();
     String API_KEY = "10495b97d078417fb38c4183f7f771ad";
-    private String city;
+    private String city = "Davao";
     
     public String execute() throws Exception {
         try {
-            System.out.println(city);
             URL url = new URL("https://api.weatherbit.io/v2.0/current?city=" + getCity() + "&key=" + API_KEY);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");

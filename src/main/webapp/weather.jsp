@@ -13,7 +13,7 @@ pageEncoding="UTF-8" %>
             <h1>Weather for today's video</h1>
             <s:form action="weather">
                 <s:textfield name="city" placeholder="Enter city" class="city"/>
-                <s:submit value="Search" class="submit"/>
+                <s:submit value="Search City" class="submit"/>
             </s:form>
         </div>
         <s:iterator value="dataResponse.data">  
