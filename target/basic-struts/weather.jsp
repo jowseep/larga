@@ -17,7 +17,7 @@ pageEncoding="UTF-8" %>
             </s:form>
         </div>
         <s:iterator value="dataResponse.data">  
-            <fieldset class="newst">
+            <fieldset class="weatherst">
                 <div class="news">
                     <div class="news-font">
                         <h3><s:property value="city_name" /></h3><br/>

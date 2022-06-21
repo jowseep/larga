@@ -16,7 +16,7 @@ public class Login extends ActionSupport {
 
     private Accounts account;
     private String error = "Random";
-    private String username, password;
+    private String username, password, token;
     String encryptedPassword;
 
     public Login() {
@@ -97,6 +97,14 @@ public class Login extends ActionSupport {
         return encryptedPassword;
     }
 
+    public String authlogin() throws Exception {
+        if(token != null) {
+            return "success";
+        } else {
+            return "fail";
+        }
+    }
+    
     public Accounts getAccount() {
         return account;
     }
@@ -129,4 +137,11 @@ public class Login extends ActionSupport {
         this.password = password;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

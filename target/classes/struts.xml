@@ -23,7 +23,14 @@
             <result>/index.jsp</result>
         </action>
 
-        <action name="login" class="com.example.proj.action.Login">
+        <action name="login" class="com.example.proj.action.Login" method="authlogin">
+            <interceptor-ref name="defaultStack"/>
+            <result name="input">/index.jsp</result>
+            <result name="success">/welcome.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="unauthlogin" class="com.example.proj.action.Login" method="execute">
             <interceptor-ref name="defaultStack"/>
             <result name="input">/index.jsp</result>
             <result name="success">/welcome.jsp</result>

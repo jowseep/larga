@@ -5,7 +5,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="./common/style.css">
-    <title>Basic Struts 2 Application - Welcome</title>
+    <title>Home | Larga!</title>
   </head>
   <body>
     <s:include value="./common/header.jsp" />
@@ -13,7 +13,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
     <div class="login-whole">
       <h1 class="login-header">Pag log-in sa</h1>
       <div class="login-form">
-        <s:form action="login">
+        <s:form action="unauthlogin">
           <s:textfield name="username" label="Username" class="username" placeholder="Username"/><br>
           <s:password name="password" label="Password" class="username" placeholder="Password"/><br>
           <s:submit value="Login" class="submit"/>
@@ -22,6 +22,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
       <div class="options">
         <p><a href="register.jsp">Register</a></p>
         <p><a href="<s:url action='list'/>">List of users</a></p>
+        <p><a href="https://larga.hub.loginradius.com/auth.aspx?action=login&return_url=http://localhost:8080/basic-struts/login">Login with LoginRadius</a></p>
       </div>
     </div>
   </body>
