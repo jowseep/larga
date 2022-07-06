@@ -16,7 +16,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
         <s:form action="unauthlogin">
           <s:textfield name="username" label="Username" class="username" placeholder="Username"/><br>
           <s:password name="password" label="Password" class="username" placeholder="Password"/><br>
-          <s:submit value="Login" class="submit"/>
+          <s:submit value="Login" class="submit"><s:param name="token">${token}</s:param></s:submit>
         </s:form>
       </div>
       <div class="options">

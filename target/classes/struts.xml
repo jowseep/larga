@@ -23,17 +23,41 @@
             <result>/index.jsp</result>
         </action>
 
-        <action name="login" class="com.example.proj.action.Login" method="authlogin">
+        <!-- <action name="profile" class="com.example.proj.action.Login" method="authlogin">
             <interceptor-ref name="defaultStack"/>
             <result name="input">/index.jsp</result>
             <result name="success">/welcome.jsp</result>
+            <result name="fail">/index.jsp</result>
+        </action> -->
+
+        <action name="profile" class="com.example.proj.action.Login" method="authlogin">
+            <interceptor-ref name="defaultStack"/>
+            <result name="input">/index.jsp</result>
+            <result name="success">
+                <param name="location">/welcome.jsp</param>
+                <param name="token">${token}</param>
+            </result>
+            <result name="fail">/index.jsp</result>
+        </action>
+
+        <action name="login" class="com.example.proj.action.Login" method="authlogin">
+            <!-- <interceptor-ref name="defaultStack"/> -->
+            <result name="input">/index.jsp</result>
+            <result name ="success" type="redirectAction">
+                <param name="actionName">profile</param>
+                <param name="token">${token}</param>
+            </result>
             <result name="fail">/error.jsp</result>
         </action>
 
         <action name="unauthlogin" class="com.example.proj.action.Login" method="execute">
-            <interceptor-ref name="defaultStack"/>
+            <!-- <interceptor-ref name="defaultStack"/> -->
             <result name="input">/index.jsp</result>
-            <result name="success">/welcome.jsp</result>
+            <!-- <result name="success">/welcome.jsp</result> -->
+            <result name="success">
+                <param name="location">/welcome.jsp</param>
+                <param name="token">${token}</param>
+            </result>
             <result name="fail">/error.jsp</result>
         </action>
 
@@ -41,6 +65,10 @@
             <result name="success">/thankyou.jsp</result>
             <result name="input">/register.jsp</result>
             <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="book" class="com.example.proj.action.Book" method="execute">
+            <result name="success">/book.jsp</result>
         </action>
 
         <action name="list" class="com.example.proj.action.List" method="execute">

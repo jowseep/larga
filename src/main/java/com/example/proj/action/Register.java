@@ -70,8 +70,7 @@ public class Register extends ActionSupport{
         try {
             if (connection != null) {
                 statement = connection.createStatement();
-                System.out.println("The encrypted password is: " + encrypt(account.getPassword()));
-                String sql = "INSERT INTO userinfo(firstname, lastname, birthdate, email, username, password) VALUES('"+account.getFirstName()+"','"+account.getLastName()+"','"+account.getBirthDate()+"','"+account.getEmail()+"','"+account.getUsername()+"','"+encrypt(account.getPassword())+"')";
+                String sql = "INSERT INTO userinfo(firstname, lastname, email, username, password) VALUES('"+account.getFirstName()+"','"+account.getLastName()+"','"+account.getEmail()+"','"+account.getUsername()+"','"+encrypt(account.getPassword())+"')";
                 statement.executeUpdate(sql);
                 return true;
             } else {

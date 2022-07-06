@@ -11,30 +11,27 @@ public class Accounts {
     private String password;
     private String firstName;
     private String lastName;
-    private String birthDate;
     private String status;
     private String email;
 
-    public Accounts(int id, String username, String password, String firstName, String lastName, String birthDate, String email) {
+    public Accounts(int id, String username, String password, String firstName, String lastName, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate = birthDate;
         this.email = email;
     }
 
     public Accounts() {}
 
-    public Accounts(String username, String password, String firstName, String lastName, String email, String birthDate) {
+    public Accounts(String username, String password, String firstName, String lastName, String email) {
         // this.id = id;
         this.username = username;
         this.password= password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.birthDate = birthDate;
     }
 
     @Override
@@ -55,7 +52,6 @@ public class Accounts {
                 .append(this.firstName, rhs.firstName)
                 .append(this.lastName, rhs.lastName)
                 .append(this.email, rhs.email)
-                .append(this.email, rhs.birthDate)
                 .isEquals();
     }
 
@@ -67,7 +63,6 @@ public class Accounts {
             .append(firstName)
             .append(lastName)
             .append(email)
-            .append(birthDate)
             .toHashCode();
     }
 
@@ -79,7 +74,6 @@ public class Accounts {
             .append("firstName", firstName)
             .append("lastName", lastName)
             .append("email", email)
-            .append("birthDate", birthDate)
             .toString();
     }
 
@@ -113,14 +107,6 @@ public class Accounts {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
     }
 
     public String getEmail() {

@@ -12,6 +12,7 @@ public class Weather {
     DataResponse dataResponse = new DataResponse();
     String API_KEY = "10495b97d078417fb38c4183f7f771ad";
     private String city = "Davao";
+    // private String imgLink = "https://www.weatherbit.io/static/img/icons/" + icon + ".png";
     
     public String execute() throws Exception {
         try {
@@ -52,5 +53,6 @@ public class Weather {
 
     public void setCity(String city) {
         this.city = city;
-    }    
+    }
+    
 }

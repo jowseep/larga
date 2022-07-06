@@ -97,17 +97,17 @@
     position: relative;
   }
 
-  .intro, .news {
-    margin-left: 35vw;
-  }
-
   .weatherst {
-    width: 26%;
+    width: 40%;
     margin-left: 20px;
     border: solid 0.7px;
     border-radius: 5px;
     margin-bottom: 5px;
     position: relative;
+  }
+
+  .containerst {
+    margin-left: 35%;
   }
 
   .head {
@@ -131,4 +131,12 @@
     border-radius: 3px;
     margin-top: 10px;
     width: 240;
-}
+  }
+
+  .maayo {
+    margin-left: 70px;
+  }
+
+  img {
+    margin-left: 35%;
+  }

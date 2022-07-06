@@ -81,7 +81,6 @@ public class List extends ActionSupport {
                     accounts.setFirstName(rs.getString(2));   
                     accounts.setLastName(rs.getString(3));
                     accounts.setUsername(rs.getString(7));
-                    accounts.setBirthDate(rs.getString(4));   
                     accounts.setEmail(rs.getString(5)); 
                     account.add(accounts);
                     firstNames.add(accounts.getFirstName());
@@ -111,7 +110,6 @@ public class List extends ActionSupport {
                     Accounts newaccounts = new Accounts(); 
                     newaccounts.setLastName(rs.getString(3));
                     newaccounts.setUsername(rs.getString(7));
-                    newaccounts.setBirthDate(rs.getString(4));   
                     newaccounts.setEmail(rs.getString(5)); 
                     newaccounts.setFirstName(rs.getString(2));
                     setAccountFound(newaccounts);

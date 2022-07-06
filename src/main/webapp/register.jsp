@@ -18,7 +18,6 @@
             <s:textfield name="account.lastName" class="reg" placeholder="Lastname" /><br>
             <s:textfield name="account.username" class="reg" placeholder="Username" /><br>
             <s:password name="account.password" class="reg" placeholder="Password"/><br>
-            <s:textfield name="account.birthDate" class="reg" placeholder="Birthdate" /><br>
             <s:textfield name="account.email" class="reg" placeholder="Email" /><br>
             <s:submit class="submit"/>
         </s:form>

@@ -23,10 +23,20 @@
             <result>/index.jsp</result>
         </action>
 
-        <action name="login" class="com.example.proj.action.Login" method="authlogin">
+        <action name="profile" class="com.example.proj.action.Login" method="authlogin">
             <interceptor-ref name="defaultStack"/>
             <result name="input">/index.jsp</result>
             <result name="success">/welcome.jsp</result>
+            <result name="fail">/index.jsp</result>
+        </action>
+
+        <action name="login" class="com.example.proj.action.Login" method="authlogin">
+            <interceptor-ref name="defaultStack"/>
+            <result name="input">/index.jsp</result>
+            <result name ="success" type="redirectAction">
+                <param name="actionName">profile</param>
+                <param name="token">${token}</param>
+            </result>
             <result name="fail">/error.jsp</result>
         </action>
 
@@ -34,6 +44,10 @@
             <interceptor-ref name="defaultStack"/>
             <result name="input">/index.jsp</result>
             <result name="success">/welcome.jsp</result>
+            <!-- <result name="success">
+                <param name="actionName">profile</param>
+                <param name="token">${token}</param>
+            </result> -->
             <result name="fail">/error.jsp</result>
         </action>
 

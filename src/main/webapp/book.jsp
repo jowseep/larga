@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="./common/style.css">
     <title>Book | Larga!</title>
+    <sx:head />
   </head>
   <body>
     <s:include value="./common/header.jsp" />
@@ -14,9 +16,18 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
       <h1 class="login-header">Book na kaw</h1>
       <div class="login-form">
         <s:form action="login">
-          <s:textfield name="username" label="Username" class="username" placeholder="Asa ka gikan"/><br>
-          <s:textfield name="username" label="Username" class="username" placeholder="Asa ka diay moadto"/><br>
-          <s:textfield name="username" label="Username" class="username" placeholder="Unsa nga adlaw pud"/><br>
+          <s:select label="What's your favor search engine" 
+            headerKey="-1" headerValue="Departure City"
+            list="cities" 
+            name="departure_city" 
+            class="username" /><br>
+            <s:select label="What's your favor search engine" 
+            headerKey="-1" headerValue="Arrival City"
+            list="cities" 
+            name="departure_city" 
+            class="username" /><br>
+            <sx:datetimepicker name="date" 
+            displayFormat="dd-MMM-yyyy" value="%{'today'}"/><br>
           <s:submit value="Ibook na nako" class="submit"/>
         </s:form>
       </div>

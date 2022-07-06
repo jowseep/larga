@@ -8,24 +8,34 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
+import java.util.UUID;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import java.sql.Statement;
+import java.sql.Timestamp;
 
 import com.example.proj.model.Accounts;
 import com.opensymphony.xwork2.ActionSupport;  
 
-public class Login extends ActionSupport {
+public class Login extends ActionSupport implements SessionAware {
 
     private Accounts account;
     private String error = "Random";
     private String username, password, token;
     String encryptedPassword;
+    private Map<String, Object> userSession;
 
     public Login() {
     }
 
     public String execute() throws Exception{
-
         account = getAccount();
         if(lookToDB()) {
+            userSession.put("token", token);
+            String newToken = (String) userSession.get("token");
+            System.out.println("Finally bitch the token is " + newToken);
             return "success";
         } else {
             return "fail";
@@ -49,9 +59,16 @@ public class Login extends ActionSupport {
 
     public boolean lookToDB() throws SQLException {
         Connection connection = connectToDB();
-        PreparedStatement preparedStatement = null;
+        Connection connection2 = connectToDB();
+        PreparedStatement preparedStatement = null; // for log in
+        Statement statement = null; // for inserting token
         try {
-            if (connection != null) {
+            if ((connection != null) && (connection2 != null)) {
+                token = generateToken();
+                String sql1 = "UPDATE `mydb`.`userinfo` SET `mytoken` = '"+token+"' WHERE (`username` = '"+getUsername()+"')"; // for insertion
+                setToken(token);
+                statement = connection.createStatement(); // for insertion
+                statement.executeUpdate(sql1); // for insertion
                 String sql = "SELECT * FROM userinfo WHERE username='"+getUsername()+"' AND password='"+encrypt(getPassword())+"'";
                 preparedStatement = connection.prepareStatement(sql);
                 ResultSet rs = preparedStatement.executeQuery();
@@ -61,7 +78,6 @@ public class Login extends ActionSupport {
                     accounts.setFirstName(rs.getString(2));   
                     accounts.setLastName(rs.getString(3));
                     accounts.setUsername(rs.getString(7));
-                    accounts.setBirthDate(rs.getString(4));   
                     accounts.setEmail(rs.getString(5)); 
                     setAccount(accounts);
                     return true;
@@ -104,6 +120,24 @@ public class Login extends ActionSupport {
             return "fail";
         }
     }
+
+    public String logout() throws Exception {
+        String newToken = (String) userSession.get("token");
+        userSession.clear();
+        if(newToken == null){
+            return "success";
+        } else {
+            return "fail";
+        }
+    }
+
+    public static String generateToken() {
+		StringBuilder token = new StringBuilder();
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		long currentTimeInMilisecond = timestamp.getTime();
+		return token.append(currentTimeInMilisecond).append("-")
+				.append(UUID.randomUUID().toString()).toString();
+	}
     
     public Accounts getAccount() {
         return account;
@@ -144,4 +178,18 @@ public class Login extends ActionSupport {
     public void setToken(String token) {
         this.token = token;
     }
+
+    public Map<String, Object> getUserSession() {
+        return userSession;
+    }
+
+    public void setUserSession(Map<String, Object> userSession) {
+        this.userSession = userSession;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+        userSession = session;
+    }
+    
 }

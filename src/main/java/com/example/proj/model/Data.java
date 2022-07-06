@@ -29,7 +29,7 @@ public class Data {
     public class Weather {
         private String icon;
         private String description;
-        private String code;
+        private int code;
 
         public String getIcon() {
             return icon;
@@ -43,10 +43,10 @@ public class Data {
         public void setDescription(String description) {
             this.description = description;
         }
-        public String getCode() {
+        public int getCode() {
             return code;
         }
-        public void setCode(String code) {
+        public void setCode(int code) {
             this.code = code;
         }
     }
@@ -338,7 +338,4 @@ public class Data {
     public void setApp_temp(int app_temp) {
         this.app_temp = app_temp;
     }
-
-    
-
 }
