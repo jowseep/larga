@@ -25,7 +25,6 @@ pageEncoding="UTF-8" %>
         <s:property value="firstName"/><br/> 
         <s:property value="lastName"/><br/>
         <s:property value="username"/><br/>
-        <s:property value="birthDate"/><br/>
         <s:property value="email"/><br/><hr>
     </fieldset>  
     </s:iterator>

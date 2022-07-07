@@ -23,15 +23,25 @@
             <result>/index.jsp</result>
         </action>
 
-        <action name="profile" class="com.example.proj.action.Login" method="authlogin">
+        <!-- <action name="profile" class="com.example.proj.action.Login" method="authlogin">
             <interceptor-ref name="defaultStack"/>
             <result name="input">/index.jsp</result>
             <result name="success">/welcome.jsp</result>
             <result name="fail">/index.jsp</result>
+        </action> -->
+
+        <action name="profile" class="com.example.proj.action.Login" method="authlogin">
+            <interceptor-ref name="defaultStack"/>
+            <result name="input">/index.jsp</result>
+            <result name="success">
+                <param name="location">/welcome.jsp</param>
+                <param name="token">${token}</param>
+            </result>
+            <result name="fail">/index.jsp</result>
         </action>
 
         <action name="login" class="com.example.proj.action.Login" method="authlogin">
-            <interceptor-ref name="defaultStack"/>
+            <!-- <interceptor-ref name="defaultStack"/> -->
             <result name="input">/index.jsp</result>
             <result name ="success" type="redirectAction">
                 <param name="actionName">profile</param>
@@ -41,13 +51,13 @@
         </action>
 
         <action name="unauthlogin" class="com.example.proj.action.Login" method="execute">
-            <interceptor-ref name="defaultStack"/>
+            <!-- <interceptor-ref name="defaultStack"/> -->
             <result name="input">/index.jsp</result>
-            <result name="success">/welcome.jsp</result>
-            <!-- <result name="success">
-                <param name="actionName">profile</param>
+            <!-- <result name="success">/welcome.jsp</result> -->
+            <result name="success">
+                <param name="location">/welcome.jsp</param>
                 <param name="token">${token}</param>
-            </result> -->
+            </result>
             <result name="fail">/error.jsp</result>
         </action>
 
@@ -55,6 +65,10 @@
             <result name="success">/thankyou.jsp</result>
             <result name="input">/register.jsp</result>
             <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="book" class="com.example.proj.action.Book" method="execute">
+            <result name="success">/book.jsp</result>
         </action>
 
         <action name="list" class="com.example.proj.action.List" method="execute">
@@ -75,6 +89,35 @@
 
         <action name="weather" class="com.example.proj.action.Weather" method="execute">
             <result name="success">/weather.jsp</result>
+        </action>
+
+        <action name="result" class="com.example.proj.action.Book" method="result">
+            <result name="success" type="redirectAction">
+                <param name="actionName">resultRedirect</param>
+                <param name="departure_city">${departure_city}</param>
+                <param name="arrival_city">${arrival_city}</param>
+                <param name="date">${date}</param>
+            </result>
+        </action>
+
+        <action name="resultRedirect" class="com.example.proj.action.Book" method="result">
+            <result name="success">/result.jsp</result>
+        </action>
+
+        <!-- <action name="seats" class="com.example.proj.action.Book" method="seats">
+            <result name="success" type="redirectAction">
+                <param name="actionName">seatsRedirect</param>
+                <param name="date">${date}</param>
+                <param name="travel_id">${id}</param>
+            </result>
+        </action> -->
+
+        <action name="seats" class="com.example.proj.action.Book" method="seats">
+            <result name="success">/seat.jsp</result>
+        </action>
+
+        <action name="seatchosen" class="com.example.proj.action.Book" method="seatchosen">
+            <result name="success">/summary.jsp</result>
         </action>
 
     </package>

@@ -4,7 +4,7 @@ uri = "/struts-tags" %>
   <nav>
     <ul class="nav-list">
       <li class="nav-list">
-        <p><a href="book.jsp">Book</a></p>
+        <p><a href="<s:url action='book'/>">Book</a></p>
       </li>
       <li class="nav-list">
         <p><a href="<s:url action='news'/>">News</a></p>

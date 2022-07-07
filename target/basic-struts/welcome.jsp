@@ -10,8 +10,8 @@
   </head>
     <s:include value="./common/header.jsp" />
     <h2 class="maayo">Maayong pag-abot</h2>
-    <p><s:property value="account.firstName" /></p>
-    <p class="maayo"><a href="https://larga.hub.loginradius.com/auth.aspx?action=logout&return_url=http://localhost:8080/basic-struts/index" >I-logout</a></p>
+    <p class="maayo"><a href="https://larga.hub.loginradius.com/auth.aspx?action=logout&return_url=http://localhost:8080/basic-struts/index" >I-logout gamit ang LoginRadius</a></p>
+    <p class="maayo"><a href="<s:url action='list'/>">I logout ang account</a></p>
     <p class="maayo"><a href="https://larga.hub.loginradius.com/auth.aspx?action=forgotpassword&return_url=http://localhost:8080/basic-struts/index" >Kalimot kos password</a></p>
 
     <div class="container">
@@ -47,7 +47,7 @@
                               <h5>Natawhan:</h5>
                           </div>
                           <div class="col-md-9 text-secondary">
-                              <span><s:property value="accountFound.birthDate"/></span>
+                              <span><s:property value="account.birthDate"/></span>
                           </div>
                       </div>
                       <hr>
@@ -56,7 +56,7 @@
                               <h5>Email</h5>
                           </div>
                           <div class="col-md-9 text-secondary">
-                              <span><s:property value="accountFound.email"/></span>
+                              <span><s:property value="account.email"/></span>
                           </div>
                       </div>
                   </div>

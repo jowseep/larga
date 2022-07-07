@@ -91,6 +91,35 @@
             <result name="success">/weather.jsp</result>
         </action>
 
+        <action name="result" class="com.example.proj.action.Book" method="result">
+            <result name="success" type="redirectAction">
+                <param name="actionName">resultRedirect</param>
+                <param name="departure_city">${departure_city}</param>
+                <param name="arrival_city">${arrival_city}</param>
+                <param name="date">${date}</param>
+            </result>
+        </action>
+
+        <action name="resultRedirect" class="com.example.proj.action.Book" method="result">
+            <result name="success">/result.jsp</result>
+        </action>
+
+        <!-- <action name="seats" class="com.example.proj.action.Book" method="seats">
+            <result name="success" type="redirectAction">
+                <param name="actionName">seatsRedirect</param>
+                <param name="date">${date}</param>
+                <param name="travel_id">${id}</param>
+            </result>
+        </action> -->
+
+        <action name="seats" class="com.example.proj.action.Book" method="seats">
+            <result name="success">/seat.jsp</result>
+        </action>
+
+        <action name="seatchosen" class="com.example.proj.action.Book" method="seatchosen">
+            <result name="success">/summary.jsp</result>
+        </action>
+
     </package>
 
     <package name="api" namespace="/api" extends="rest-default">

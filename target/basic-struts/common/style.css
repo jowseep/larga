@@ -140,3 +140,22 @@
   img {
     margin-left: 35%;
   }
+
+  /* for the seats */
+  .table tbody tr td:not(:first-child) {
+    border: 1px solid blue;
+    width: 1em;
+    height:1em;
+  }
+  
+  .table tbody tr td:first-child {
+    font-weight:bold;
+  }
+  
+  /* .table tr td:4th-child {
+    margin-right:2em;
+  } */
+
+  .table {
+    border-spacing: 3em;
+  }

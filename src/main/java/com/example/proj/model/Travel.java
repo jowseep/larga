@@ -6,16 +6,20 @@ public class Travel {
     private String departure;
     private String arrival;
     private String bus_company;
+    private String bus_unit;
     private float price;
+    private String time;
 
     public Travel() {}
 
-    public Travel(int id, String departure, String arrival, String bus_company, float price) {
+    public Travel(int id, String departure, String arrival, String bus_company, String bus_unit, float price, String time) {
         this.id = id;
         this.departure = departure;
         this.arrival = arrival;
         this.bus_company = bus_company;
+        this.bus_unit = bus_unit;
         this.price = price;
+        this.time = time;
     }
 
     public int getId() {
@@ -57,6 +61,20 @@ public class Travel {
     public void setPrice(float price) {
         this.price = price;
     }
-    
-    
+
+    public String getBus_unit() {
+        return bus_unit;
+    }
+
+    public void setBus_unit(String bus_unit) {
+        this.bus_unit = bus_unit;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 }
