@@ -104,20 +104,33 @@
             <result name="success">/result.jsp</result>
         </action>
 
-        <!-- <action name="seats" class="com.example.proj.action.Book" method="seats">
+        <action name="seats" class="com.example.proj.action.Seat" method="execute">
             <result name="success" type="redirectAction">
                 <param name="actionName">seatsRedirect</param>
                 <param name="date">${date}</param>
-                <param name="travel_id">${id}</param>
+                <param name="id">${id}</param>
             </result>
-        </action> -->
+        </action>
 
-        <action name="seats" class="com.example.proj.action.Book" method="seats">
+        <action name="seatsRedirect" class="com.example.proj.action.Seat" method="execute">
             <result name="success">/seat.jsp</result>
         </action>
 
-        <action name="seatchosen" class="com.example.proj.action.Book" method="seatchosen">
+        <action name="seatchosen" class="com.example.proj.action.SeatChosen" method="execute">
+            <result name="success" type="redirectAction">
+                <param name="actionName">seatchosenRedirect</param>
+                <param name="date">${date}</param>
+                <param name="id">${id}</param>
+                <param name="seatchosen">${seatchosen}</param>
+            </result>
+        </action>
+
+        <action name="seatchosenRedirect" class="com.example.proj.action.SeatChosen" method="execute">
             <result name="success">/summary.jsp</result>
+        </action>
+
+        <action name="confirm" class="com.example.proj.action.Confirm" method="execute">
+            <result name="success">/confirmation.jsp</result>
         </action>
 
     </package>

@@ -10,15 +10,25 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
   <body>
     <s:include value="./common/header.jsp" />
 
-    <p>The traved id is: <s:property value="id"/></p><br>
-    <p>Departure City: <s:property value="travel.departure_city"/></p><br>
-    <p>Arrival City <s:property value="travel.arrival_city"/></p><br>
-    <p>Bus Company: <s:property value="travel.bus_company"/></p><br>
-    <p>Time: <s:property value="travel.time"/></p><br>
-    <p>Price: <s:property value="travel.price"/></p><br>
+    <s:property value="%{date}"/><br/>
+    <s:property value="%{id}"/><br/> 
+    <!-- mao ni siya atong sa travel id -->
+    <!-- <s:iterator value="travel">  
+    <fieldset>  
+        <s:property value="departure"/><br/> 
+        <s:property value="arrival"/><br/>
+        <s:property value="bus_company"/><br/>
+        <s:property value="time"/><br/>
+        <s:property value="price"/><br/>
+        <hr>
+    </fieldset>  
+    </s:iterator> -->
     
     <s:form action="seatchosen">
         <s:textfield name="seatchosen" label="Seat" class="username" placeholder="Seat #"/><br>
+        <s:hidden name="seatchosen" value="%{seatchosen}"/>
+        <s:hidden name="date" value="%{date}"/>
+        <s:hidden name="id" value="%{id}"/>
         <s:submit value="Select" class="submit"/>
     </s:form>
     <table class="table">

@@ -13,7 +13,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
     <s:include value="./common/header.jsp" />
     
     <div class="login-whole">
-      <h1 class="login-header">Book na kaw</h1>
+      <h1 class="login-header">Book Now</h1>
       <div class="login-form">
         <s:form action="result">
           <s:select label="What's your favor search engine" 

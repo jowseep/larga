@@ -10,7 +10,10 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
   <body>
     <s:include value="./common/header.jsp" />
 
-    <s:iterator value="travel">  
+    <s:property value="%{date}"/><br/>
+    <s:property value="%{id}"/><br/> 
+    <!-- mao ni siya atong sa travel id -->
+    <!-- <s:iterator value="travel">  
     <fieldset>  
         <s:property value="departure"/><br/> 
         <s:property value="arrival"/><br/>
@@ -19,10 +22,13 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
         <s:property value="price"/><br/>
         <hr>
     </fieldset>  
-    </s:iterator>
+    </s:iterator> -->
     
     <s:form action="seatchosen">
         <s:textfield name="seatchosen" label="Seat" class="username" placeholder="Seat #"/><br>
+        <s:hidden name="seatchosen" value="%{seatchosen}"/>
+        <s:hidden name="date" value="%{date}"/>
+        <s:hidden name="id" value="%{id}"/>
         <s:submit value="Select" class="submit"/>
     </s:form>
     <table class="table">

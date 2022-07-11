@@ -21,9 +21,9 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
         <s:property value="date"/><br/>
         <s:url value="seats" var="seats">
           <s:param name="id" value="%{id}" />
+          <s:param name="date" value="%{date}" />
         </s:url>
         <a href="${seats}">Select</a>
-        <!-- <p><a href="<s:url action='seats'/>">Select</a></p> -->
     </fieldset>  
     </s:iterator>
   
