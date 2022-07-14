@@ -8,12 +8,20 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
     <title>Home | Larga!</title>
   </head>
   <body>
-    <s:include value="./common/header.jsp" />
+    <header>
+      <nav>
+        <ul class="nav-list">
+          <li class="nav-list">
+            <p><a href="<s:url action='book'/>">Book</a></p>
+          </li>
+        </ul>
+      </nav>
+    </header>
     
     <div class="login-whole">
       <h1 class="login-header">Pag log-in sa</h1>
       <div class="login-form">
-        <s:form action="unauthlogin">
+        <s:form action="regularlogin">
           <s:textfield name="username" label="Username" class="username" placeholder="Username"/><br>
           <s:password name="password" label="Password" class="username" placeholder="Password"/><br>
           <s:submit value="Login" class="submit">

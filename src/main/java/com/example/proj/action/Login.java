@@ -13,7 +13,6 @@ import java.util.UUID;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import java.sql.Statement;
 import java.sql.Timestamp;
 
 import com.example.proj.model.Accounts;
@@ -34,8 +33,6 @@ public class Login extends ActionSupport implements SessionAware {
         account = getAccount();
         if(lookToDB()) {
             userSession.put("token", token);
-            String newToken = (String) userSession.get("token");
-            System.out.println("Finally bitch the token is " + newToken);
             return "success";
         } else {
             return "fail";
@@ -59,16 +56,10 @@ public class Login extends ActionSupport implements SessionAware {
 
     public boolean lookToDB() throws SQLException {
         Connection connection = connectToDB();
-        Connection connection2 = connectToDB();
-        PreparedStatement preparedStatement = null; // for log in
-        Statement statement = null; // for inserting token
+        PreparedStatement preparedStatement = null;
         try {
-            if ((connection != null) && (connection2 != null)) {
+            if (connection != null) {
                 token = generateToken();
-                String sql1 = "UPDATE `mydb`.`userinfo` SET `mytoken` = '"+token+"' WHERE (`username` = '"+getUsername()+"')"; // for insertion
-                setToken(token);
-                statement = connection.createStatement(); // for insertion
-                statement.executeUpdate(sql1); // for insertion
                 String sql = "SELECT * FROM userinfo WHERE username='"+getUsername()+"' AND password='"+encrypt(getPassword())+"'";
                 preparedStatement = connection.prepareStatement(sql);
                 ResultSet rs = preparedStatement.executeQuery();
@@ -77,8 +68,9 @@ public class Login extends ActionSupport implements SessionAware {
                     Accounts accounts =new Accounts();
                     accounts.setFirstName(rs.getString(2));   
                     accounts.setLastName(rs.getString(3));
-                    accounts.setUsername(rs.getString(7));
-                    accounts.setEmail(rs.getString(5)); 
+                    accounts.setUsername(rs.getString(6));
+                    accounts.setStatus(rs.getString(5));
+                    accounts.setEmail(rs.getString(4)); 
                     setAccount(accounts);
                     return true;
                 } else {
@@ -113,18 +105,9 @@ public class Login extends ActionSupport implements SessionAware {
         return encryptedPassword;
     }
 
-    public String authlogin() throws Exception {
-        if(token != null) {
-            return "success";
-        } else {
-            return "fail";
-        }
-    }
-
     public String logout() throws Exception {
-        String newToken = (String) userSession.get("token");
         userSession.clear();
-        if(newToken == null){
+        if(token == null){
             return "success";
         } else {
             return "fail";

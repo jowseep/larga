@@ -9,11 +9,11 @@
     <title>Welcome | Larga</title>
   </head>
     <s:include value="./common/header.jsp" />
-    <h2 class="maayo">Maayong pag-abot</h2>
-    <p class="maayo"><a href="https://larga.hub.loginradius.com/auth.aspx?action=logout&return_url=http://localhost:8080/basic-struts/index" >I-logout gamit ang LoginRadius</a></p>
+    <h2 class="maayo">Hi there. How are you?</h2>
+    <!-- <p class="maayo"><a href="https://larga.hub.loginradius.com/auth.aspx?action=logout&return_url=http://localhost:8080/basic-struts/index" >I-logout gamit ang LoginRadius</a></p>
     <p class="maayo"><a href="<s:url action='list'/>">I logout ang account</a></p>
-    <p class="maayo"><a href="https://larga.hub.loginradius.com/auth.aspx?action=forgotpassword&return_url=http://localhost:8080/basic-struts/index" >Kalimot kos password</a></p>
-
+    <p class="maayo"><a href="https://larga.hub.loginradius.com/auth.aspx?action=forgotpassword&return_url=http://localhost:8080/basic-struts/index" >Kalimot kos password</a></p> -->
+    <p class="maayo"><a href="<s:url action='logout'/>">Logout</a></p>
     <div class="container">
       <div class="row">
           <!-- since the matching information is already stored in accountFound, we can then access its attributes -->
@@ -44,15 +44,6 @@
                       <hr>
                       <div class="row">
                           <div class="col-md-3">
-                              <h5>Natawhan:</h5>
-                          </div>
-                          <div class="col-md-9 text-secondary">
-                              <span><s:property value="account.birthDate"/></span>
-                          </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                          <div class="col-md-3">
                               <h5>Email</h5>
                           </div>
                           <div class="col-md-9 text-secondary">
@@ -62,21 +53,18 @@
                   </div>
               </div>
               <div class="card mb-3 content">
-                  <h1 class="m-3"><s:property value="accountFound.status"></s:property></h1>
+                  <h1 class="m-3"><s:property value="account.status"></s:property></h1>
                   <div class="card-body">
                       <div class="row">
                           <div class="col-md-3">
-                              <s:set var="accountType" value="accountFound.status"/>
+                              <s:set var="accountType" value="account.status"/>
                               <!-- ang accountFound.accountType is stored na siya sa typeAccount so no need to reiterate when accessing-->
                               <s:if test="%{#accountType == 'admin'}">
-                                  <p>Admin information</p>
-                                  <p>Number of booked seats: 754</p>
-                                  <p>Revenue over the last 2 months: P866,491.43</p>
-                                  <p>Growth for the last month: 101%</p>
+                                <p><a href="<s:url action='list'/>">Complete list of users bookings</a></p>
                               </s:if>
                               <s:else>
-                                  <p>I refer imohang friend</p>
-                              </s:else>
+                                <p>Refer a friend</p>
+                            </s:else>
                           </div>
                       </div>
                   </div>

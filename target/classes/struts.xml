@@ -19,16 +19,11 @@
     <constant name="struts.ui.theme" value="simple"/>
     <!-- added namespace para og mag basic-struts/ kay moadto sa index -->
     <package name="basicstruts2" namespace="/" extends="struts-default">
-        <action name="index">
-            <result>/index.jsp</result>
+        
+        <action name="index" class="com.example.proj.action.Index" method="execute">
+            <result name="loggedin">/welcome.jsp</result>
+            <result name="notloggedin">/index.jsp</result>
         </action>
-
-        <!-- <action name="profile" class="com.example.proj.action.Login" method="authlogin">
-            <interceptor-ref name="defaultStack"/>
-            <result name="input">/index.jsp</result>
-            <result name="success">/welcome.jsp</result>
-            <result name="fail">/index.jsp</result>
-        </action> -->
 
         <action name="profile" class="com.example.proj.action.Login" method="authlogin">
             <interceptor-ref name="defaultStack"/>
@@ -50,13 +45,14 @@
             <result name="fail">/error.jsp</result>
         </action>
 
-        <action name="unauthlogin" class="com.example.proj.action.Login" method="execute">
+        <action name="regularlogin" class="com.example.proj.action.Login" method="execute">
             <!-- <interceptor-ref name="defaultStack"/> -->
             <result name="input">/index.jsp</result>
             <!-- <result name="success">/welcome.jsp</result> -->
             <result name="success">
-                <param name="location">/welcome.jsp</param>
-                <param name="token">${token}</param>
+                <!-- <param name="location">/welcome.jsp</param>
+                <param name="token">${token}</param> -->
+                /welcome.jsp
             </result>
             <result name="fail">/error.jsp</result>
         </action>
@@ -65,6 +61,11 @@
             <result name="success">/thankyou.jsp</result>
             <result name="input">/register.jsp</result>
             <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="bookingOption" class="com.example.proj.action.SeatChosen" method="bookingOption">
+            <result name="success">/summary.jsp</result>
+            <result name="login">/bookingoption.jsp</result>
         </action>
 
         <action name="book" class="com.example.proj.action.Book" method="execute">

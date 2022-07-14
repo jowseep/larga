@@ -12,19 +12,8 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
 
     <s:property value="%{date}"/><br/>
     <s:property value="%{id}"/><br/> 
-    <!-- mao ni siya atong sa travel id -->
-    <!-- <s:iterator value="travel">  
-    <fieldset>  
-        <s:property value="departure"/><br/> 
-        <s:property value="arrival"/><br/>
-        <s:property value="bus_company"/><br/>
-        <s:property value="time"/><br/>
-        <s:property value="price"/><br/>
-        <hr>
-    </fieldset>  
-    </s:iterator> -->
     
-    <s:form action="seatchosen">
+    <s:form action="bookingOption">
         <s:textfield name="seatchosen" label="Seat" class="username" placeholder="Seat #"/><br>
         <s:hidden name="seatchosen" value="%{seatchosen}"/>
         <s:hidden name="date" value="%{date}"/>

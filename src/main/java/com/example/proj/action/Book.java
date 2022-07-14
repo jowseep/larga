@@ -7,12 +7,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.example.proj.model.Travel;
 
 import java.util.Date;
 
-public class Book {
+public class Book implements SessionAware {
 
     private List<String> cities;
     ArrayList<Travel> travel = new ArrayList<Travel>();
@@ -20,6 +23,9 @@ public class Book {
     public String arrival_city;
     private Date date;
     String error = "random";
+    private String token;
+    private Map<String, Object> userSession;
+
 
     public String execute() {
         return "success";
@@ -46,6 +52,7 @@ public class Book {
         try {
 
             if (connection != null) {
+                token = (String) userSession.get("token");
                 String sql = "SELECT * FROM travel WHERE departure = '"+departure_city+"' && arrival = '"+arrival_city+"'";
                 preparedStatement = connection.prepareStatement(sql);
                 ResultSet rs= preparedStatement.executeQuery();
@@ -124,5 +131,18 @@ public class Book {
 
     public void setTravel(ArrayList<Travel> travel) {
         this.travel = travel;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+        userSession = session;
     }
 }

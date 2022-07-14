@@ -5,28 +5,30 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.Map;
 
 import com.example.proj.model.Travel;
 
-public class SeatChosen {
+import org.apache.struts2.interceptor.SessionAware;
+
+public class SeatChosen implements SessionAware {
 
     private String seatchosen;
     private Date date;
     private String id;
     String error = "random";
     Travel travel;
-    private String payment_method;
-    private List<String> payment;
+    private String token;
+    private Map<String, Object> userSession;
 
-    public SeatChosen() {
-        payment = new ArrayList<String>();
-        payment.add("GCash");
-        payment.add("PayMaya");
-        payment.add("Card");
-        payment.add("Cash");
+    public String bookingOption() {
+        token = (String) userSession.get("token");
+        if(token!=null) {
+            return "success";
+        } else {
+            return "login";
+        }
     }
 
     public Connection connectToDB() throws SQLException {
@@ -105,20 +107,16 @@ public class SeatChosen {
         this.travel = travel;
     }
 
-    public List<String> getPayment() {
-        return payment;
+    public String getToken() {
+        return token;
     }
 
-    public void setPayment(List<String> payment) {
-        this.payment = payment;
+    public void setToken(String token) {
+        this.token = token;
     }
 
-    public String getPayment_method() {
-        return payment_method;
+    @Override
+    public void setSession(Map<String, Object> session) {
+        userSession = session;
     }
-
-    public void setPayment_method(String payment_method) {
-        this.payment_method = payment_method;
-    }
-
 }

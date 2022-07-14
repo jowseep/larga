@@ -22,10 +22,6 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
           <s:param name="id" value="%{id}" />
           <s:param name="date" value="%{date}" />
     </s:url>
-    <s:select label="Payment" 
-            headerKey="-1" headerValue="Payment"
-            list="payment" 
-            name="payment_method" /><br>
     <a href="${confirm}">Confirm booking</a>
   </body>
 </html>

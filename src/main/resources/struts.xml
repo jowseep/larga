@@ -19,16 +19,11 @@
     <constant name="struts.ui.theme" value="simple"/>
     <!-- added namespace para og mag basic-struts/ kay moadto sa index -->
     <package name="basicstruts2" namespace="/" extends="struts-default">
-        <action name="index">
-            <result>/index.jsp</result>
+        
+        <action name="index" class="com.example.proj.action.Index" method="execute">
+            <result name="loggedin">/profile.jsp</result>
+            <result name="notloggedin">/index.jsp</result>
         </action>
-
-        <!-- <action name="profile" class="com.example.proj.action.Login" method="authlogin">
-            <interceptor-ref name="defaultStack"/>
-            <result name="input">/index.jsp</result>
-            <result name="success">/welcome.jsp</result>
-            <result name="fail">/index.jsp</result>
-        </action> -->
 
         <action name="profile" class="com.example.proj.action.Login" method="authlogin">
             <interceptor-ref name="defaultStack"/>
