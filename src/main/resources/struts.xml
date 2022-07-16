@@ -21,7 +21,7 @@
     <package name="basicstruts2" namespace="/" extends="struts-default">
         
         <action name="index" class="com.example.proj.action.Index" method="execute">
-            <result name="loggedin">/profile.jsp</result>
+            <result name="loggedin">/welcome.jsp</result>
             <result name="notloggedin">/index.jsp</result>
         </action>
 

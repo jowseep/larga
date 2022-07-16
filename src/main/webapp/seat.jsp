@@ -11,7 +11,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
     <s:include value="./common/header.jsp" />
 
     <s:property value="%{date}"/><br/>
-    <s:property value="%{id}"/><br/> 
+    <s:property value="%{id}"/><br/>
     
     <s:form action="bookingOption">
         <s:textfield name="seatchosen" label="Seat" class="username" placeholder="Seat #"/><br>
@@ -43,7 +43,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
+            <td style="background-color:red;"></td>
           </tr>
           <tr>
             <td>C</td>
@@ -55,13 +55,13 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
           <tr>
             <td>D</td>
             <td></td>
-            <td></td>
+            <td style="background-color:red;"></td>
             <td></td>
             <td></td>
           </tr>
           <tr>
             <td>E</td>
-            <td></td>
+            <td style="background-color:red;"></td>
             <td></td>
             <td></td>
             <td></td>
@@ -76,7 +76,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
           <tr>
             <td>G</td>
             <td></td>
-            <td></td>
+            <td style="background-color:red;"></td>
             <td></td>
             <td></td>
           </tr>
@@ -84,7 +84,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
             <td>H</td>
             <td></td>
             <td></td>
-            <td></td>
+            <td style="background-color:red;"></td>
             <td></td>
           </tr>
           <tr>
@@ -92,11 +92,11 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
+            <td style="background-color:red;"></td>
           </tr>
           <tr>
             <td>J</td>
-            <td></td>
+            <td style="background-color:red;"></td>
             <td></td>
             <td></td>
             <td></td>

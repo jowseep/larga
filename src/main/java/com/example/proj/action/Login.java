@@ -33,6 +33,7 @@ public class Login extends ActionSupport implements SessionAware {
         account = getAccount();
         if(lookToDB()) {
             userSession.put("token", token);
+            userSession.put("username", username);
             return "success";
         } else {
             return "fail";

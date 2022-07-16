@@ -12,10 +12,11 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.example.proj.model.Travel;
+import com.opensymphony.xwork2.ActionSupport;
 
 import java.util.Date;
 
-public class Book implements SessionAware {
+public class Book extends ActionSupport implements SessionAware {
 
     private List<String> cities;
     ArrayList<Travel> travel = new ArrayList<Travel>();
@@ -28,6 +29,7 @@ public class Book implements SessionAware {
 
 
     public String execute() {
+        userSession.put("date", date);
         return "success";
     }
 

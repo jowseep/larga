@@ -13,7 +13,14 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
     <h1>Oops! You're not logged in yet.</h1>
     <h2>Would you like to log in to keep track of your bookings?</h2>
 
-    <p><a href="<s:url action='seatchosen'/>">Book as guest</a></p>
+    <s:url value="bookguest" var="bookguest">
+          <s:param name="id" value="%{id}" />
+          <s:param name="date" value="%{date}" />
+          <s:param name="seat_chosen" value="%{seat_chosen}" />
+    </s:url>
+    <a href="${bookguest}">Confirm booking</a>
+
+    <p><a href="<s:url action='bookguest'/>">Book as guest</a></p>
     <p><a href="<s:url action='index'/>">Sign in</a></p>
     
   </body>
