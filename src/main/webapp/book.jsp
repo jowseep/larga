@@ -32,6 +32,9 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
         </s:form>
       </div>
     </div>
+    <div class="photobelow">
+      <img src="./photos/riding.jpg" alt="illustration1">
+    </div>
   </body>
 </html>
 

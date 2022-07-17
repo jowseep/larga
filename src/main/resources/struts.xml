@@ -57,9 +57,15 @@
         </action>
 
         <action name="register" class="com.example.proj.action.Register" method="execute">
-            <result name="success">/thankyou.jsp</result>
+            <result name ="success" type="redirectAction">
+                <param name="actionName">registerRedirect</param>
+            </result>
             <result name="input">/register.jsp</result>
             <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="registerRedirect" class="com.example.proj.action.Book" method="execute">
+            <result name="success">/welcome.jsp</result>
         </action>
 
         <action name="book" class="com.example.proj.action.Book" method="execute">

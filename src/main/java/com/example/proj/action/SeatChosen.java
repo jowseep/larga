@@ -74,7 +74,7 @@ public class SeatChosen implements SessionAware {
          }
         return "success";
     }
-
+    
     public String bookingoption() {
         return "success";
     }

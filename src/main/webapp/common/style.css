@@ -41,12 +41,12 @@
   .login-header {
     margin-left: 20px;
     margin-bottom: 15px;
-    font-weight: 400;
+    font-weight: 550;
     color: #112B3C;
   }
 
   .username, .password, .reg {
-    height: 24px;
+    height: 30px;
     width: 200px;
     border: solid 0.5px;
     padding: 5px;
@@ -80,7 +80,7 @@
     color: gray;
   }
 
-  .intro, .news, .newstoday {
+  .intro, .news, .newstoday, .result {
     margin: 20px 40px 20px 20px;
   }
 
@@ -141,7 +141,6 @@
     margin-left: 35%;
   }
 
-  /* for the seats */
   .table tbody tr td:not(:first-child) {
     border: 1px solid blue;
     width: 1em;
@@ -151,11 +150,17 @@
   .table tbody tr td:first-child {
     font-weight:bold;
   }
-  
-  /* .table tr td:4th-child {
-    margin-right:2em;
-  } */
 
   .table {
     border-spacing: 3em;
+  }
+
+  img {
+    margin-top: 165px;
+    width: 30%;
+    height: auto;
+  }
+  
+  .photobelow {
+    align-items: center;
   }

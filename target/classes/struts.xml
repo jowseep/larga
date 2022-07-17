@@ -58,13 +58,13 @@
         <action name="bookingOption" class="com.example.proj.action.SeatChosen" method="bookingOption">
             <result name="success" type="redirectAction">
                 <param name="actionName">summary</param>
-                <param name="seat_chosen">${seat_chosen}</param>
+                <param name="seatchosen">${seatchosen}</param>
                 <param name="id">${id}</param>
                 <param name="date">${date}</param>
             </result>
             <result name="login" type="redirectAction">
                 <param name="actionName">bookingoption</param>
-                <param name="seat_chosen">${seat_chosen}</param>
+                <param name="seatchosen">${seatchosen}</param>
                 <param name="id">${id}</param>
                 <param name="date">${date}</param>
             </result>
@@ -74,7 +74,7 @@
             <result name="success">/summary.jsp</result>
         </action>
 
-        <action name="bookingoption" class="com.example.proj.action.SeatChosen" method="confirmation">
+        <action name="bookingoption" class="com.example.proj.action.SeatChosen" method="bookingoption">
             <result name="success">/bookingoption.jsp</result>
         </action>
 
@@ -150,11 +150,15 @@
         </action>
 
         <action name="bookguestRedirect" class="com.example.proj.action.SeatChosen" method="execute">
-            <result name="success">/confirmation.jsp</result>
+            <result name="success">/summary.jsp</result>
         </action>
 
         <action name="confirm" class="com.example.proj.action.Confirm" method="execute">
             <result name="success">/confirmation.jsp</result>
+        </action>
+
+        <action name="logout" class="com.example.proj.action.Login" method="logout">
+            <result name="success">/index.jsp</result>
         </action>
 
     </package>

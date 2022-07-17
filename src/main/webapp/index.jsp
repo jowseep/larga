@@ -19,13 +19,12 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
     </header>
     
     <div class="login-whole">
-      <h1 class="login-header">Pag log-in sa</h1>
+      <h1 class="login-header">Login</h1>
       <div class="login-form">
         <s:form action="regularlogin">
           <s:textfield name="username" label="Username" class="username" placeholder="Username"/><br>
           <s:password name="password" label="Password" class="username" placeholder="Password"/><br>
-          <s:submit value="Login" class="submit">
-          <!-- <s:param name="token">${token}</s:param></s:submit> -->
+          <s:submit value="Login" class="submit"/>
         </s:form>
       </div>
       <div class="options">
@@ -33,6 +32,9 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
         <p><a href="<s:url action='list'/>">List of users</a></p>
         <p><a href="https://larga.hub.loginradius.com/auth.aspx?action=login&return_url=http://localhost:8080/basic-struts/login">Login with LoginRadius</a></p>
       </div>
+    </div>
+    <div class="photobelow">
+      <img src="./photos/riding.jpg" alt="illustration1" class="illustration">
     </div>
   </body>
 </html>

@@ -24,6 +24,7 @@ public class Login extends ActionSupport implements SessionAware {
     private String error = "Random";
     private String username, password, token;
     String encryptedPassword;
+    private Integer user_id;
     private Map<String, Object> userSession;
 
     public Login() {
@@ -32,8 +33,9 @@ public class Login extends ActionSupport implements SessionAware {
     public String execute() throws Exception{
         account = getAccount();
         if(lookToDB()) {
+            setUser_id(account.getId());
             userSession.put("token", token);
-            userSession.put("username", username);
+            userSession.put("user_id", user_id);
             return "success";
         } else {
             return "fail";
@@ -67,6 +69,7 @@ public class Login extends ActionSupport implements SessionAware {
 
                 if(rs.next()){  
                     Accounts accounts =new Accounts();
+                    accounts.setId(rs.getInt(1));
                     accounts.setFirstName(rs.getString(2));   
                     accounts.setLastName(rs.getString(3));
                     accounts.setUsername(rs.getString(6));
@@ -169,6 +172,14 @@ public class Login extends ActionSupport implements SessionAware {
 
     public void setUserSession(Map<String, Object> userSession) {
         this.userSession = userSession;
+    }
+
+    public Integer getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     @Override

@@ -11,18 +11,20 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
     <s:include value="./common/header.jsp" />
 
     <h1>Oops! You're not logged in yet.</h1>
-    <h2>Would you like to log in to keep track of your bookings?</h2>
+    <h2>Would you like to log in to keep track of all your bookings?</h2>
 
     <s:url value="bookguest" var="bookguest">
           <s:param name="id" value="%{id}" />
           <s:param name="date" value="%{date}" />
-          <s:param name="seat_chosen" value="%{seat_chosen}" />
+          <s:param name="seatchosen" value="%{seatchosen}" />
     </s:url>
-    <a href="${bookguest}">Confirm booking</a>
-
-    <p><a href="<s:url action='bookguest'/>">Book as guest</a></p>
-    <p><a href="<s:url action='index'/>">Sign in</a></p>
+    <s:url value="index" var="index">
+          <s:param name="id" value="%{id}" />
+          <s:param name="date" value="%{date}" />
+          <s:param name="seatchosen" value="%{seatchosen}" />
+    </s:url>
+    <p><a href="${bookguest}">Book as guest</a></p>
+    <p></p><a href="${index}">Login or Sign up</a></p>
     
   </body>
 </html>
-
