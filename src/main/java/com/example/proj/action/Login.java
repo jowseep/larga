@@ -125,6 +125,10 @@ public class Login extends ActionSupport implements SessionAware {
 		return token.append(currentTimeInMilisecond).append("-")
 				.append(UUID.randomUUID().toString()).toString();
 	}
+
+    public String updateprofile() {
+        return "success";
+    }
     
     public Accounts getAccount() {
         return account;

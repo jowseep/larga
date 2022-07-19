@@ -17,7 +17,6 @@
     <constant name="struts.rest.namespace" value="/api" />
 
     <constant name="struts.ui.theme" value="simple"/>
-    <!-- added namespace para og mag basic-struts/ kay moadto sa index -->
     <package name="basicstruts2" namespace="/" extends="struts-default">
         
         <action name="index" class="com.example.proj.action.Index" method="execute">
@@ -25,34 +24,9 @@
             <result name="notloggedin">/index.jsp</result>
         </action>
 
-        <action name="profile" class="com.example.proj.action.Login" method="authlogin">
-            <interceptor-ref name="defaultStack"/>
+        <action name="regularlogin" class="com.example.proj.action.Login" method="execute">
             <result name="input">/index.jsp</result>
-            <result name="success">
-                <param name="location">/welcome.jsp</param>
-                <param name="token">${token}</param>
-            </result>
-            <result name="fail">/index.jsp</result>
-        </action>
-
-        <action name="login" class="com.example.proj.action.Login" method="authlogin">
-            <!-- <interceptor-ref name="defaultStack"/> -->
-            <result name="input">/index.jsp</result>
-            <result name ="success" type="redirectAction">
-                <param name="actionName">profile</param>
-                <param name="token">${token}</param>
-            </result>
-            <result name="fail">/error.jsp</result>
-        </action>
-
-        <action name="unauthlogin" class="com.example.proj.action.Login" method="execute">
-            <!-- <interceptor-ref name="defaultStack"/> -->
-            <result name="input">/index.jsp</result>
-            <!-- <result name="success">/welcome.jsp</result> -->
-            <result name="success">
-                <param name="location">/welcome.jsp</param>
-                <param name="token">${token}</param>
-            </result>
+            <result name="success">/welcome.jsp</result>
             <result name="fail">/error.jsp</result>
         </action>
 
@@ -117,9 +91,15 @@
             <result name="success">/seat.jsp</result>
         </action>
 
-        <action name="seatchosen" class="com.example.proj.action.SeatChosen" method="execute">
+        <action name="bookingOption" class="com.example.proj.action.SeatChosen" method="bookingOption">
             <result name="success" type="redirectAction">
                 <param name="actionName">seatchosenRedirect</param>
+                <param name="date">${date}</param>
+                <param name="id">${id}</param>
+                <param name="seatchosen">${seatchosen}</param>
+            </result>
+            <result name="login" type="redirectAction">
+                <param name="actionName">bookingoptionRedirect</param>
                 <param name="date">${date}</param>
                 <param name="id">${id}</param>
                 <param name="seatchosen">${seatchosen}</param>
@@ -129,9 +109,34 @@
         <action name="seatchosenRedirect" class="com.example.proj.action.SeatChosen" method="execute">
             <result name="success">/summary.jsp</result>
         </action>
+        
+        <action name="bookingoptionRedirect" class="com.example.proj.action.SeatChosen" method="bookingoption">
+            <result name="success">/bookingoption.jsp</result>
+        </action>
+
+        <action name="bookguest" class="com.example.proj.action.SeatChosen" method="execute">
+            <result name="success" type="redirectAction">
+                <param name="actionName">bookguestRedirect</param>
+                <param name="date">${date}</param>
+                <param name="id">${id}</param>
+                <param name="seatchosen">${seatchosen}</param>
+            </result>
+        </action>      
+        
+        <action name="bookguestRedirect" class="com.example.proj.action.SeatChosen" method="execute">
+            <result name="success">/summary.jsp</result>
+        </action>
 
         <action name="confirm" class="com.example.proj.action.Confirm" method="execute">
             <result name="success">/confirmation.jsp</result>
+        </action>
+
+        <action name="logout" class="com.example.proj.action.Login" method="logout">
+            <result name="success">/index.jsp</result>
+        </action>
+
+        <action name="updateprofile" class="com.example.proj.action.Login" method="updateprofile">
+            <result name="success">/updateprofile.jsp</result>
         </action>
 
     </package>
