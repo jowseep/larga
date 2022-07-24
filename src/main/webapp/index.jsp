@@ -30,7 +30,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
       <div class="options">
         <p><a href="register.jsp">Register</a></p>
         <p><a href="<s:url action='list'/>">List of users</a></p>
-        <p><a href="https://larga.hub.loginradius.com/auth.aspx?action=login&return_url=http://localhost:8080/basic-struts/login">Login with LoginRadius</a></p>
+        <!-- <p><a href="https://larga.hub.loginradius.com/auth.aspx?action=login&return_url=http://localhost:8080/basic-struts/login">Login with LoginRadius</a></p> -->
       </div>
     </div>
   </body>

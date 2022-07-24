@@ -59,6 +59,17 @@
       <artifactId>struts2-rest-plugin</artifactId>
       <version>${struts2.version}</version>
     </dependency>
+    <!-- <dependency>
+      <groupId>com.google.api-client</groupId>
+      <artifactId>google-api-client</artifactId>
+      <version>1.32.1</version>
+    </dependency> -->
+    <!-- para daw ni sa gmail api -->
+    <!-- <dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-gmail</artifactId>
+      <version>v1-rev20211108-1.32.1</version>
+    </dependency> -->
 
   </dependencies>
 

@@ -74,7 +74,7 @@ public class List extends ActionSupport {
             if (connection != null) {
                 String sql = "SELECT * FROM userinfo";
                 preparedStatement = connection.prepareStatement(sql);
-                ResultSet rs= preparedStatement.executeQuery();
+                ResultSet rs = preparedStatement.executeQuery();
 
                 while(rs.next()){  
                     Accounts accounts=new Accounts();

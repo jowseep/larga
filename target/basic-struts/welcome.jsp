@@ -9,12 +9,11 @@
     <title>Welcome | Larga</title>
   </head>
     <s:include value="./common/header.jsp" />
-    <h2 class="maayo">Hi there. How are you?</h2>
+    <h2 class="maayo">Larga!</h2>
     <!-- <p class="maayo"><a href="https://larga.hub.loginradius.com/auth.aspx?action=logout&return_url=http://localhost:8080/basic-struts/index" >I-logout gamit ang LoginRadius</a></p>
     <p class="maayo"><a href="<s:url action='list'/>">I logout ang account</a></p>
     <p class="maayo"><a href="https://larga.hub.loginradius.com/auth.aspx?action=forgotpassword&return_url=http://localhost:8080/basic-struts/index" >Kalimot kos password</a></p> -->
-    <p class="maayo"><a href="<s:url action='logout'/>">Logout</a></p>
-    <p class="maayo"><a href="<s:url action='updateprofile'/>">Update Profile</a></p>
+    <!-- <p class="maayo"><a href="<s:url action='updateprofile'/>">Update Profile</a></p> -->
     <div class="container">
       <div class="row">
           <!-- since the matching information is already stored in accountFound, we can then access its attributes -->
@@ -24,8 +23,10 @@
                       <img src="" alt="profile" class="rounded-circle" width="150">
                       <div class="mt-3"></div>
                       <h2>
-                          <span><s:property value="account.username"/></span>
+                        <span><s:property value="account.firstName"/></span>
+                        <span><s:property value="account.lastName"/></span>
                       </h2>
+                      <p class="maayo"><a href="<s:url action='logout'/>">Logout</a></p>
                   </div>
               </div>
           </div>
@@ -35,17 +36,16 @@
                   <div class="card-body">
                       <div class="row">
                           <div class="col-md-3">
-                              <h5>Ngan: </h5>
+                              <h5>Username: </h5>
                           </div>
                           <div class="col-md-9 text-secondary">
-                              <span><s:property value="account.firstName"/></span>
-                              <span><s:property value="account.lastName"/></span>
+                              <span><s:property value="account.username"/></span>
                           </div>
                       </div>
                       <hr>
                       <div class="row">
                           <div class="col-md-3">
-                              <h5>Email</h5>
+                              <h5>Email address: </h5>
                           </div>
                           <div class="col-md-9 text-secondary">
                               <span><s:property value="account.email"/></span>
@@ -54,7 +54,7 @@
                   </div>
               </div>
               <div class="card mb-3 content">
-                  <h1 class="m-3"><s:property value="account.status"></s:property></h1>
+                  <h1 class="m-3">Here's what's more: </h1>
                   <div class="card-body">
                       <div class="row">
                           <div class="col-md-3">
@@ -64,7 +64,7 @@
                                 <p><a href="<s:url action='list'/>">Complete list of users bookings</a></p>
                               </s:if>
                               <s:else>
-                                <p>Your bookings: </p>
+                                <p>Refer a friend</p>
                             </s:else>
                           </div>
                       </div>

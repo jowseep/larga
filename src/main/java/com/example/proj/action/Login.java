@@ -16,11 +16,13 @@ import org.apache.struts2.interceptor.SessionAware;
 import java.sql.Timestamp;
 
 import com.example.proj.model.Accounts;
+import com.example.proj.model.Booking;
 import com.opensymphony.xwork2.ActionSupport;  
 
 public class Login extends ActionSupport implements SessionAware {
 
     private Accounts account;
+    private Booking booking;
     private String error = "Random";
     private String username, password, token;
     String encryptedPassword;
@@ -184,6 +186,14 @@ public class Login extends ActionSupport implements SessionAware {
 
     public void setUser_id(Integer user_id) {
         this.user_id = user_id;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 
     @Override

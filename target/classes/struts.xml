@@ -135,10 +135,47 @@
             <result name="success">/index.jsp</result>
         </action>
 
-        <action name="updateprofile" class="com.example.proj.action.Login" method="updateprofile">
-            <result name="success">/updateprofile.jsp</result>
+        <action name="booking" class="com.example.proj.action.BookingList" method="lookBooking">
+            <result name="success">/managebookings.jsp</result>
         </action>
 
+        <action name="cancelbooking" class="com.example.proj.action.BookingList" method="cancelBooking">
+            <result name="success" type="redirectAction">
+                <param name="actionName">aftercancel</param>
+            </result>
+        </action>
+
+        <action name="aftercancel" class="com.example.proj.action.BookingList" method="lookBooking">
+            <result name="success">/managebookings.jsp</result>
+        </action>
+
+        <action name="guestlist" class="com.example.proj.action.BookingList" method="guestBooking">
+            <result name="success">/guestbookings.jsp</result>
+        </action>
+
+        <action name="userlist" class="com.example.proj.action.BookingList" method="userBooking">
+            <result name="success">/userbookings.jsp</result>
+        </action>
+
+        <action name="confirmbookingguest" class="com.example.proj.action.BookingList" method="cancelBooking">
+            <result name="success" type="redirectAction">
+                <param name="actionName">afterconfirmguest</param>
+            </result>
+        </action>
+
+        <action name="afterconfirmguest" class="com.example.proj.action.BookingList" method="guestBooking">
+            <result name="success">/guestbookings.jsp</result>
+        </action>
+
+        <action name="confirmbookinguser" class="com.example.proj.action.BookingList" method="cancelBooking">
+            <result name="success" type="redirectAction">
+                <param name="actionName">afterconfirmuser</param>
+            </result>
+        </action>
+
+        <action name="afterconfirmuser" class="com.example.proj.action.BookingList" method="userBooking">
+            <result name="success">/userbookings.jsp</result>
+        </action>
     </package>
 
     <package name="api" namespace="/api" extends="rest-default">

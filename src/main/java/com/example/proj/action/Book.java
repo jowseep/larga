@@ -29,7 +29,7 @@ public class Book extends ActionSupport implements SessionAware {
 
 
     public String execute() {
-        userSession.put("date", date);
+        // userSession.put("date", date);
         return "success";
     }
 

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -56,6 +58,10 @@ public class Confirm implements SessionAware{
     }
 
     public boolean createBookingUser() throws SQLException {
+        String thedateFormat = "yyyy-MM-dd"; 
+        Calendar calendar = Calendar.getInstance();     
+        SimpleDateFormat dateFormat = new SimpleDateFormat(thedateFormat);       
+        dateToday = dateFormat.format(calendar.getTime());
         user_id = (Integer) userSession.get("user_id");
         Connection connection = connectToDB();
         Statement statement = null;
@@ -79,6 +85,10 @@ public class Confirm implements SessionAware{
     }
 
     public boolean createBookingGuest() throws SQLException {
+        String date = "yyyy-MM-dd"; 
+        Calendar calendar = Calendar.getInstance();     
+        SimpleDateFormat dateFormat = new SimpleDateFormat(date);       
+        dateToday = dateFormat.format(calendar.getTime());
         Connection connection = connectToDB();
         Statement statement = null;
         try {

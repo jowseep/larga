@@ -135,8 +135,8 @@
             <result name="success">/index.jsp</result>
         </action>
 
-        <action name="updateprofile" class="com.example.proj.action.Login" method="updateprofile">
-            <result name="success">/updateprofile.jsp</result>
+        <action name="booking" class="com.example.proj.action.BookingList" method="lookBooking">
+            <result name="success">/managebookings.jsp</result>
         </action>
 
     </package>

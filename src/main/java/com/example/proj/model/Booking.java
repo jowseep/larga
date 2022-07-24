@@ -2,46 +2,94 @@ package com.example.proj.model;
 
 //this model contains all the user's booking information after reserving a seat
 public class Booking {
-    private int id;
-    private int user_id;
-    private String seat_no;
+    private int booking_reference;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String departure_city;
+    private String arrival_city;
     private String travel_date;
-    private String payment_method;
+    private String travel_time;
     private String booking_date;
+    private String bus_operator;
+    private String seat;
+    
 
     public Booking() {}
 
-    public Booking(int id, int user_id, String seat_no, String travel_date, String payment_method, String booking_date) {
-        this.id = id;
-        this.user_id = user_id;
-        this.seat_no = seat_no;
+    public Booking(int booking_reference, String firstName, String lastName, String email, String departure_city, String arrival_city, String travel_date, String travel_time, String booking_date, String bus_operator, String seat) {
+        this.booking_reference = booking_reference;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email; 
+        this.departure_city = departure_city;
+        this.arrival_city = arrival_city;
         this.travel_date = travel_date;
-        this.payment_method = payment_method;
+        this.travel_time = travel_time;
         this.booking_date = booking_date;
+        this.bus_operator = bus_operator;
+        this.seat = seat;
     }
 
-    public int getId() {
-        return id;
+    public Booking(int booking_reference, String departure_city, String arrival_city, String travel_date, String travel_time, String booking_date, String bus_operator, String seat) {
+        this.booking_reference = booking_reference;
+        this.departure_city = departure_city;
+        this.arrival_city = arrival_city;
+        this.travel_date = travel_date;
+        this.travel_time = travel_time;
+        this.booking_date = booking_date;
+        this.bus_operator = bus_operator;
+        this.seat = seat;
     }
 
-    public void setId(int id) {
-        this.id = id;
+
+    public int getBooking_reference() {
+        return booking_reference;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public void setBooking_reference(int booking_reference) {
+        this.booking_reference = booking_reference;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getSeat_no() {
-        return seat_no;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setSeat_no(String seat_no) {
-        this.seat_no = seat_no;
+    public String getLastName() {
+        return lastName;
+    }
+
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDeparture_city() {
+        return departure_city;
+    }
+
+    public void setDeparture_city(String departure_city) {
+        this.departure_city = departure_city;
+    }
+
+    public String getArrival_city() {
+        return arrival_city;
+    }
+
+    public void setArrival_city(String arrival_city) {
+        this.arrival_city = arrival_city;
     }
 
     public String getTravel_date() {
@@ -52,12 +100,12 @@ public class Booking {
         this.travel_date = travel_date;
     }
 
-    public String getPayment_method() {
-        return payment_method;
+    public String getTravel_time() {
+        return travel_time;
     }
 
-    public void setPayment_method(String payment_method) {
-        this.payment_method = payment_method;
+    public void setTravel_time(String travel_time) {
+        this.travel_time = travel_time;
     }
 
     public String getBooking_date() {
@@ -68,5 +116,20 @@ public class Booking {
         this.booking_date = booking_date;
     }
 
-    
+    public String getBus_operator() {
+        return bus_operator;
+    }
+
+    public void setBus_operator(String bus_operator) {
+        this.bus_operator = bus_operator;
+    }
+
+    public String getSeat() {
+        return seat;
+    }
+
+    public void setSeat(String seat) {
+        this.seat = seat;
+    }
+
 }
