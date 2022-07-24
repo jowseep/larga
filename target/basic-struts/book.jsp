@@ -27,7 +27,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
             name="arrival_city" 
             class="username" /><br>
             <sx:datetimepicker name="date" 
-            displayFormat="dd-MMM-yyyy" value="%{'today'}" id="username"/><br>
+            displayFormat="dd-MMM-yyyy" value="%{'today'}"/><br>
           <s:submit value="Search" class="submit"/>
         </s:form>
       </div>

@@ -6,7 +6,6 @@
   }
   /* HEADER STYLES */
   header {
-    color: black;
     height: 50px;
   }
   nav, li {
@@ -20,7 +19,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #112B3C;
+    color: white;
     font-weight: 200;
   }
   .links {
@@ -47,7 +46,7 @@
 
   .username, .password, .reg {
     height: 30px;
-    width: 200px;
+    width: 210px;
     border: solid 0.5px;
     padding: 5px;
     border-radius: 3px;

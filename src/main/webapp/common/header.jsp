@@ -9,9 +9,9 @@ uri = "/struts-tags" %>
       <li class="nav-list">
         <p><a href="<s:url action='booking'/>">Booking</a></p>
       </li>
-      <li class="nav-list">
+      <!-- <li class="nav-list">
         <p><a href="<s:url action='weather'/>">Weather</a></p>
-      </li>
+      </li> -->
       <li class="nav-list">
         <p><a href="<s:url action='index'/>">Home</a></p>
       </li>

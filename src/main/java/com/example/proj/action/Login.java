@@ -17,9 +17,8 @@ import java.sql.Timestamp;
 
 import com.example.proj.model.Accounts;
 import com.example.proj.model.Booking;
-import com.opensymphony.xwork2.ActionSupport;  
 
-public class Login extends ActionSupport implements SessionAware {
+public class Login implements SessionAware {
 
     private Accounts account;
     private Booking booking;

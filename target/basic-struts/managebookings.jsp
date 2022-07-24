@@ -6,15 +6,16 @@ pageEncoding="UTF-8" %>
 <html>
   <head>
     <link rel="stylesheet" href="common/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   </head>
   <body>
     <s:include value="./common/header.jsp" />
-    <s:set var="booking_reference" value="booking.booking_reference"/>
-    <s:if test="%{#booking_reference == null}">
-      <p>You have no bookings. You may click here to book yours.</p>
+    <s:set var="booking" value="booking"/>
+    <s:if test="%{#booking == null}">
+      <p>You have no current bookings. You may click <a href="<s:url action='book'/>">here</a> to book yours.</p>
     </s:if>
     <s:else>
-      <h2>Your current bookings: </h2>
+      <h2>Your upcoming bus trips: </h2>
       <s:iterator value="booking">  
       <fieldset>  
           <p>Booking reference: <s:property value="booking_reference"/></p>
@@ -25,7 +26,10 @@ pageEncoding="UTF-8" %>
           <p>Booking date: <s:property value="booking_date"/></p>
           <p>Bus operator: <s:property value="bus_operator"/></p>
           <p>Seat no: <s:property value="seat"/></p>
-          <a href="<s:url action='cancelbooking'/>">Cancel booking</a>
+          <s:url value="cancelbooking" var="cancelbooking">
+              <s:param name="booking_reference" value="%{booking_reference}" />
+          </s:url>
+          <a href="${cancelbooking}" class="btn btn-danger btn-md mt-3">Cancel booking</a>
       </fieldset>  
       </s:iterator>
   </s:else>
