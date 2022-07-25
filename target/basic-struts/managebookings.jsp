@@ -15,23 +15,27 @@ pageEncoding="UTF-8" %>
       <p>You have no current bookings. You may click <a href="<s:url action='book'/>">here</a> to book yours.</p>
     </s:if>
     <s:else>
-      <h2>Your upcoming bus trips: </h2>
-      <s:iterator value="booking">  
-      <fieldset>  
-          <p>Booking reference: <s:property value="booking_reference"/></p>
-          <p>Departure city: <s:property value="departure_city"/></p>
-          <p>Arrival city: <s:property value="arrival_city"/></p>
-          <p>Travel date: <s:property value="travel_date"/></p>
-          <p>Time: <s:property value="travel_time"/></p>
-          <p>Booking date: <s:property value="booking_date"/></p>
-          <p>Bus operator: <s:property value="bus_operator"/></p>
-          <p>Seat no: <s:property value="seat"/></p>
-          <s:url value="cancelbooking" var="cancelbooking">
-              <s:param name="booking_reference" value="%{booking_reference}" />
-          </s:url>
-          <a href="${cancelbooking}" class="btn btn-danger btn-md mt-3">Cancel booking</a>
-      </fieldset>  
-      </s:iterator>
+      <h2 class="mx-2">Your upcoming bus trips: </h2>
+      <div class="head">
+        <s:iterator value="booking">  
+        <fieldset class="newst">  
+          <div class="news">
+            <p>Booking reference: <s:property value="booking_reference"/></p>
+            <p>Departure city: <s:property value="departure_city"/></p>
+            <p>Arrival city: <s:property value="arrival_city"/></p>
+            <p>Travel date: <s:property value="travel_date"/></p>
+            <p>Time: <s:property value="travel_time"/></p>
+            <p>Booking date: <s:property value="booking_date"/></p>
+            <p>Bus operator: <s:property value="bus_operator"/></p>
+            <p>Seat no: <s:property value="seat"/></p>
+            <s:url value="cancelbooking" var="cancelbooking">
+                <s:param name="booking_reference" value="%{booking_reference}" />
+            </s:url>
+            <a href="${cancelbooking}" class="btn btn-danger btn-md mt-3">Cancel booking</a>
+          </div>
+        </fieldset>  
+        </s:iterator>
+      </div>
   </s:else>
   </body>
 </html>

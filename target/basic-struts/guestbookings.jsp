@@ -10,25 +10,29 @@ pageEncoding="UTF-8" %>
   </head>
   <body>
     <s:include value="./common/header.jsp" />
-    <h1>All bookings: </h1>
-    <s:iterator value="booking">  
-    <fieldset>  
-        <p>Booking reference: <s:property value="booking_reference"/></p>
-        <p>Firstname: <s:property value="firstName"/></p>
-        <p>Lastname: <s:property value="lastName"/></p>
-        <p>Email: <s:property value="email"/></p>
-        <p>Departure city: <s:property value="departure_city"/></p>
-        <p>Arrival city: <s:property value="arrival_city"/></p>
-        <p>Travel date: <s:property value="travel_date"/></p>
-        <p>Time: <s:property value="travel_time"/></p>
-        <p>Booking date: <s:property value="booking_date"/></p>
-        <p>Bus operator: <s:property value="bus_operator"/></p>
-        <p>Seat no: <s:property value="seat"/></p>
-        <s:url value="confirmbookingguest" var="confirmbookingguest">
-            <s:param name="booking_reference" value="%{booking_reference}" />
-        </s:url>
-        <a href="${confirmbookingguest}" class="btn btn-success btn-md mt-3">Accept and confirm booking</a>
-    </fieldset>  
-    </s:iterator>
+    <h1 class="mx-2">All bookings: </h1>
+    <div class="head">
+      <s:iterator value="booking">  
+      <fieldset class="newst">  
+        <div class="news">
+          <p>Booking reference: <s:property value="booking_reference"/></p>
+          <p>Firstname: <s:property value="firstName"/></p>
+          <p>Lastname: <s:property value="lastName"/></p>
+          <p>Email: <s:property value="email"/></p>
+          <p>Departure city: <s:property value="departure_city"/></p>
+          <p>Arrival city: <s:property value="arrival_city"/></p>
+          <p>Travel date: <s:property value="travel_date"/></p>
+          <p>Time: <s:property value="travel_time"/></p>
+          <p>Booking date: <s:property value="booking_date"/></p>
+          <p>Bus operator: <s:property value="bus_operator"/></p>
+          <p>Seat no: <s:property value="seat"/></p>
+          <s:url value="confirmbookingguest" var="confirmbookingguest">
+              <s:param name="booking_reference" value="%{booking_reference}" />
+          </s:url>
+          <a href="${confirmbookingguest}" class="btn btn-success btn-md mt-3">Accept and confirm booking</a>
+        </div>
+      </fieldset>  
+      </s:iterator>
+    </div>
   </body>
 </html>

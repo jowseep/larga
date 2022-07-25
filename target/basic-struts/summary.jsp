@@ -32,12 +32,19 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
         </s:form>
       </s:if>
       <s:else>
-        <s:url value="confirm" var="confirm">
+        <!-- <s:url value="confirm" var="confirm">
             <s:param name="id" value="%{id}" />
             <s:param name="date" value="%{date}" />
             <s:param name="seatchosen" value="%{seatchosen}" />
-      </s:url>
-      <a href="${confirm}" class="btn btn-success btn-md mt-3">Confirm booking</a>
+      </s:url> -->
+      <s:form action="confirm">
+        <s:textfield name="email" label="Email address" class="username" placeholder="Email"/><br>
+        <s:hidden name="seatchosen" value="%{seatchosen}"/>
+        <s:hidden name="date" value="%{date}"/>
+        <s:hidden name="id" value="%{id}"/>
+        <s:submit value="Confirm" class="submit"/>
+        <!-- <a href="${confirm}" class="btn btn-success btn-md mt-3">Confirm booking</a> -->
+        </s:form>
       </s:else>
     </div>
   </body>

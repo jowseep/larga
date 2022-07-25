@@ -44,7 +44,7 @@ public class Confirm implements SessionAware{
         if(token!=null) {
             if(createBookingUser()) {
                 Gmail service = GmailAPI.getGmailService();
-		        MimeMessage Mimemessage = createEmail("askjosephcallao@gmail.com","me","Booking Confirmation","This email serves as a proof that your booking has just been confirmed on");
+		        MimeMessage Mimemessage = createEmail(getEmail(),"me","Booking Confirmation","This email serves as a proof that your booking has just been confirmed on");
 	
 		        Message message = createMessageWithEmail(Mimemessage);
 		

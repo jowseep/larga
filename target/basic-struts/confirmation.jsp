@@ -9,7 +9,7 @@ pageEncoding="UTF-8" %> <%@ taglib prefix="s" uri="/struts-tags" %>
     <title>Confirmation | Larga!</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container mt-5">
       <div class="row">
         <div class="col-md-12">
           <h1>Congrats, your booking is confirmed! </h1>
