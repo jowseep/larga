@@ -102,49 +102,4 @@ public class GmailAPI {
 		}
 		return null;
 	}
-
-    // public static Gmail getGmailService() {
-    //     return null;
-    // }
-
-    // private static final String APPLICATION_NAME = "Gmail API Java Quickstart";
-    // private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
-    // private static final String user = "me";
-    // private static final String TOKENS_DIRECTORY_PATH = "tokens";
-
-    // private static final List<String> SCOPES = Collections.singletonList(GmailScopes.GMAIL_LABELS);
-    // private static File filePath = new File(System.getProperty("user.dir") + "/credentials.json");
-
-    // private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
-    //     InputStream in = new FileInputStream(filePath);
-    //     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
-
-    //     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
-    //             HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
-    //             .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
-    //             .setAccessType("offline")
-    //             .build();
-    //     LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8080).build();
-    //     Credential credential = new AuthorizationCodeInstalledApp(flow, receiver).authorize(user);
-    //     return credential;
-    // }
-
-    // public static void main(String[] args) throws IOException, GeneralSecurityException {
-    //     final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-    //     Gmail service = new Gmail.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-    //             .setApplicationName(APPLICATION_NAME)
-    //             .build();
-
-    //     String user = "jowseep@gmail.com";
-    //     ListLabelsResponse listResponse = service.users().labels().list(user).execute();
-    //     List<Label> labels = listResponse.getLabels();
-    //     if (labels.isEmpty()) {
-    //         System.out.println("No labels found.");
-    //     } else {
-    //         System.out.println("Labels:");
-    //         for (Label label : labels) {
-    //             System.out.printf("- %s\n", label.getName());
-    //         }
-    //     }
-    // }
 }
